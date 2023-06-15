@@ -13,6 +13,7 @@ async function getDynamoWeatherData(city) {
     return data.Item;
   } catch (error) {
     console.log('Error: ', error);
+    throw error;
   }
 }
 
