@@ -3,8 +3,10 @@ import { Container } from '@mui/material';
 
 export default function WeatherHero() {
   return (
-    <Container className="hero-container card">
-      <h1>hello, world</h1>
-    </Container>
+    <div className="hero">
+      <div className="hero-card">
+        <h1>Hello, World</h1>
+      </div>
+    </div>
   );
 }

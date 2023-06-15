@@ -5,10 +5,12 @@ export default function Forecast() {
   return (
     <div className="forecast">
       <div className="forecast-left">
-        <Container className="card forecast-left-1"></Container>
-        <Container className="card forecast-left-2"></Container>
+        <div className="card-left">Forecast 1</div>
+        <div className="card-left">Forecast 2</div>
       </div>
-      <Container className="forecast-right card" maxWidth="xl"></Container>
+      <div className="forecast-right">
+        <div className="card-right"> Air Quality</div>
+      </div>
     </div>
   );
 }
