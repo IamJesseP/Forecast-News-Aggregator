@@ -1,0 +1,45 @@
+.flex_center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 50px;
+}
+
+.hero-container {
+  color: white;
+  height: 300px;
+  width: 100%;
+  /* From https://css.glass */
+  background: rgba(45, 45, 45, 0.21);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5.6px);
+  -webkit-backdrop-filter: blur(5.6px);
+  border: 1px solid rgba(45, 45, 45, 0.02);
+  border-radius: 30px;
+}
+
+body {
+  background-color: rgb(247, 243, 239);
+}
+
+/* body {
+  background: linear-gradient(-45deg, #03045e, #023e8a, #0077b6, #0096c7, #00b4d8);
+  background-size: 400% 400%;
+  animation: gradient 70s ease infinite;
+  height: 100vh;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+} */

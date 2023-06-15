@@ -1,9 +1,10 @@
 import React from 'react';
+import { Container } from '@mui/material';
 
 export default function WeatherHero() {
   return (
-    <div>
+    <Container className="hero-container">
       <h1>hello, world</h1>
-    </div>
+    </Container>
   );
 }
