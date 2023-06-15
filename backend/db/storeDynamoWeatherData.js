@@ -1,10 +1,10 @@
 const AWS = require('./config');
 const dynamoDb = new AWS.DynamoDB.DocumentClient();
 
-async function storeDynamoWeatherData(weatherData) {
+async function storeDynamoWeatherData(weatherData, city) {
   const params = {
     TableName: 'weatherData',
-    Item: weatherData
+    Item: { weatherData, city: city }
   };
 
   try {
