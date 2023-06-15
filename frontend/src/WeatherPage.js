@@ -5,9 +5,13 @@ import './styles.css';
 
 export default function WeatherPage() {
   return (
-    <div className="flex_center">
-      <WeatherHero />
-      <Forecast />
-    </div>
+    <>
+      <div className="flex_center">
+        <WeatherHero />
+      </div>
+      <div className="flex_center">
+        <Forecast />
+      </div>
+    </>
   );
 }

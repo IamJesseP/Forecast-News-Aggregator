@@ -1,45 +1,55 @@
 .flex_center {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 50px;
+  margin: 25px;
+  width: 100%;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 30px;
 }
 
 .hero-container {
   color: white;
   height: 300px;
   width: 100%;
-  /* From https://css.glass */
-  background: rgba(45, 45, 45, 0.21);
-  border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(5.6px);
-  -webkit-backdrop-filter: blur(5.6px);
-  border: 1px solid rgba(45, 45, 45, 0.02);
-  border-radius: 30px;
+  margin: 10px 100px;
 }
 
 body {
-  background-color: rgb(247, 243, 239);
+  background-color: #dfe2ef;
 }
 
-/* body {
-  background: linear-gradient(-45deg, #03045e, #023e8a, #0077b6, #0096c7, #00b4d8);
-  background-size: 400% 400%;
-  animation: gradient 70s ease infinite;
-  height: 100vh;
+.forecast {
+  display: flex;
+  height: 300px;
+  width: 1000px;
+  flex: 1 auto auto;
+  flex-direction: row;
+  gap: 10px;
+  width: 600px;
+}
+.forecast-left {
+  display: flex;
+  width: 600px;
+  flex: 1 auto auto;
+  flex-direction: column;
+  gap: 10px;
+  width: 600px;
+  margin: 25px;
 }
 
-@keyframes gradient {
-  0% {
-    background-position: 0% 50%;
-  }
-
-  50% {
-    background-position: 100% 50%;
-  }
-
-  100% {
-    background-position: 0% 50%;
-  }
-} */
+.forecast-right {
+  margin: 25px;
+}
+.forecast-left > div {
+  height: 50%;
+}
