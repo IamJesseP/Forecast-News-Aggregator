@@ -8,12 +8,10 @@ const app = express();
 app.use(express.json());
 
 // Routers
-const taskRouter = require('./routes/taskRoutes');
+const weatherRouter = require('./routes/weatherRoutes');
 
 // Endpoints
-app.get('/', (req, res) => {
-  res.send('Hello, world!');
-});
+app.use('/weather', weatherRouter);
 
 // Start the server
 const port = process.env.PORT || 4000;
