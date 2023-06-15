@@ -9,9 +9,11 @@ app.use(express.json());
 
 // Routers
 const weatherRouter = require('./routes/weatherRoutes');
+const airQualtiyRouter = require('./routes/airQualityRoutes');
 
 // Endpoints
 app.use('/weather', weatherRouter);
+app.use('/airquality', airQualtiyRouter);
 
 // Start the server
 const port = process.env.PORT || 4000;
