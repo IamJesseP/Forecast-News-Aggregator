@@ -11,18 +11,6 @@
   },
   "rules": {
     "no-console": "error",
-    "no-unused-vars": "off",
-    "prettier/prettier": [
-      "error",
-      {
-        "endOfLine": "auto",
-        "semi": true,
-        "tabWidth": 2,
-        "printWidth": 100,
-        "singleQuote": true,
-        "trailingComma": "none",
-        "jsxBracketSameLine": true
-      }
-    ]
+    "no-unused-vars": "off"
   }
 }
