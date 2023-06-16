@@ -1,22 +1,6 @@
-// geocode package
-const nodeGeocoder = require('node-geocoder');
-const options = {
-  provider: 'openstreetmap'
-};
-const geoCoder = nodeGeocoder(options);
-
 //axios
 const axios = require('axios');
-
-async function getGeocode(location) {
-  try {
-    const res = await geoCoder.geocode(location);
-    return { latitude: res[1].latitude, longitude: res[1].longitude };
-  } catch (err) {
-    console.log(err);
-    throw err;
-  }
-}
+const { getGeocode } = require('../utils/getGeocode');
 
 async function fetchWeatherAPI(location) {
   try {

@@ -1,12 +1,11 @@
-const fetchWeatherAPI = require('../db/fetchWeatherAPI');
-const getDynamoWeatherData = require('../db/getDynamoWeatherData');
-const storeDynamoWeatherData = require('../db/storeDynamoWeatherData');
+const fetchWeatherAPI = require('../API/fetchWeatherAPI');
+const { getDynamoWeatherData, storeDynamoWeatherData } = require('../db/dynamoWeatherData');
 const { StatusCodes } = require('http-status-codes');
 
 // lazy loading
 const getWeather = async (req, res) => {
   const { city, state } = req.body;
-
+  // validator
   let weatherData = await getDynamoWeatherData(city);
   if (weatherData) {
     console.log('data in db');

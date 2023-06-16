@@ -16,11 +16,59 @@ body {
 }
 /* ---------navigation---------- */
 .navbar {
+  margin-top: 50px;
   padding: 20px;
   padding-bottom: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+nav {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  width: 8rem;
+  height: 100%;
+  overflow: hidden;
+  z-index: 50;
+  transform: translateX(0rem);
+  transition: transform 0.5s ease-in-out;
+}
+
+.nav-item-wrapper {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+}
+.nav-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 60%;
+  max-width: 3rem;
+  max-height: 700px;
+  min-height: 300px;
+  background-color: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 9999px;
+  padding-left: 10px;
+  padding-right: 10px;
+  justify-content: space-between;
+  font-size: 2rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.nav-item {
+  cursor: pointer;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .container {
   display: flex;
@@ -33,6 +81,19 @@ body {
 }
 .search-field {
   justify-content: top;
+}
+
+.spacer {
+  height: 500px;
+}
+
+.active {
+  background: rgba(174, 173, 173, 0.08);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  -webkit-backdrop-filter: blur(2.4px);
+  border: 1px solid rgba(174, 173, 173, 0.3);
+  border-radius: 12px;
 }
 /* ---------hero-------- */
 .weather {
@@ -115,26 +176,28 @@ body {
   padding: 20px;
 }
 
+/* ---------Notify----------- */
+.notify {
+  height: 300px;
+  width: 100%;
+  max-width: 1340px;
+  padding: 20px;
+}
+
 /* ----------Mobile Devices----------- */
 @media only screen and (max-width: 768px) {
-  .greeting {
-    display: flex;
-    justify-content: center;
-  }
-  .search-field {
-    display: flex;
-    justify-content: center;
-  }
   .navbar {
-    padding-top: 10px;
+    margin-top: 1px;
   }
-  .container {
-    flex-direction: column;
-  }
+
   .navbar h1 {
     font-size: 20px;
     font-weight: 300;
   }
+  .spacer {
+    height: 1px;
+  }
+
   #outlined-search {
     width: 40%;
   }
@@ -172,7 +235,24 @@ body {
     width: calc(100% - 40px);
     height: 300px;
   }
-  .news {
-    padding: 10px 20px;
+
+  nav {
+    transform: translateX(-4.8rem);
+    transition: transform 0.5s ease-in-out;
+  }
+
+  nav:hover {
+    transform: translateX(0);
+  }
+}
+
+@media only screen and (max-width: 1524px) {
+  nav {
+    transform: translateX(-4.8rem);
+    transition: transform 0.5s ease-in-out;
+  }
+
+  nav:hover {
+    transform: translateX(0);
   }
 }
