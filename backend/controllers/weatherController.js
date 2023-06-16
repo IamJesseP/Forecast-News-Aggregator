@@ -19,6 +19,7 @@ const getWeather = async (req, res) => {
     weatherData = await fetchWeatherAPI(`${city}, ${state}`);
     console.log('storing data...');
     await storeDynamoWeatherData(weatherData, city);
+    weatherData = await getDynamoWeatherData(city);
   }
   console.log('returning fetched data');
   res.status(StatusCodes.OK).json(weatherData);

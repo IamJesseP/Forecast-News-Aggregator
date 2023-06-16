@@ -22,6 +22,7 @@ const getAirQuality = async (req, res) => {
     airQualityData = await fetchAirQualityAPI(`${city}, ${state}`);
     console.log('storing data...');
     await storeDynamoAirQualityData(airQualityData, city);
+    airQualityData = await getDynamoAirQualityData(city);
   }
   console.log('returning fetched data');
   res.status(StatusCodes.OK).json(airQualityData);

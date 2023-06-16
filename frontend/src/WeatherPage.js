@@ -21,6 +21,7 @@ export default function WeatherPage() {
   const [weatherData, setWeatherData] = useState('');
   const [searchedCity, setSearchedCity] = useState('San Diego');
   const [searchQuery, setSearchQuery] = useState('');
+  const [isLoading, setIsLoading] = useState(true);
   const source = axios.CancelToken.source();
 
   async function fetchData(city, state) {
@@ -34,6 +35,8 @@ export default function WeatherPage() {
       });
       const weatherData = response.data;
       setWeatherData(weatherData);
+      setIsLoading(false);
+      console.log(weatherData);
     } catch (error) {
       if (axios.isCancel(error)) {
         // Handle if request was cancelled
@@ -44,20 +47,11 @@ export default function WeatherPage() {
       }
     }
   }
-  useEffect(() => {
-    fetchData('');
-    // Cleanup function to cancel request on unmount
-    return () => {
-      source.cancel('Operation canceled by the user.');
-    };
-  }, []);
 
   async function handleSearch() {
     let searchArray;
     if (searchQuery.includes(',')) {
       searchArray = searchQuery.split(',');
-    } else if (searchQuery.includes(' ')) {
-      searchArray = searchQuery.split(' ');
     }
     if (!searchArray || searchArray.length !== 2) {
       console.log('Please provide City and State separated by a comma or a space');
@@ -65,10 +59,19 @@ export default function WeatherPage() {
     }
     let city = searchArray[0].trim();
     let state = searchArray[1].trim();
+    setSearchedCity(city);
     fetchData(city, state);
   }
 
-  console.log(weatherData);
+  useEffect(() => {
+    setSearchQuery('San Diego, CA');
+    handleSearch();
+    // Cleanup function to cancel request on unmount
+    return () => {
+      source.cancel('Operation canceled by the user.');
+    };
+  }, []);
+
   return (
     <>
       <div className="content">
@@ -117,7 +120,7 @@ export default function WeatherPage() {
           initial="hidden"
           whileInView={'show'}
           viewport={{ once: false, amount: 0.5 }}>
-          <WeatherHero />
+          {!isLoading && <WeatherHero weatherData={weatherData} city={searchedCity} />}
         </motion.div>
         <motion.div
           className="weather"
