@@ -32,6 +32,7 @@ body {
 
 .svg {
   position: absolute;
+  margin-top: -50px;
   top: 0;
   left: 0;
   width: 100%;
@@ -211,7 +212,9 @@ nav {
   .spacer {
     height: 1px;
   }
-
+  .svg {
+    display: none;
+  }
   #outlined-search {
     width: 40%;
   }
@@ -261,9 +264,16 @@ nav {
 }
 
 @media only screen and (max-width: 1524px) {
+  .svg {
+    margin-top: -500px;
+  }
   nav {
     transform: translateX(-4.8rem);
     transition: transform 0.5s ease-in-out;
+  }
+
+  .nav.open {
+    transform: translateX(0);
   }
 
   nav:hover {
