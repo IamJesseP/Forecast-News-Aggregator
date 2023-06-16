@@ -1,10 +1,11 @@
 // Express
 const express = require('express');
 const path = require('path');
-
-// firebase
 const app = express();
+//Security
+const cors = require('cors');
 
+app.use(cors());
 app.use(express.json());
 
 // Routers
