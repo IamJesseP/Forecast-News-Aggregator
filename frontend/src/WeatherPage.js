@@ -1,5 +1,5 @@
 // React
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import WeatherHero from './WeatherHero';
 import Forecast from './Forecast';
 import Headlines from './Headlines';
@@ -18,6 +18,7 @@ import { fadeIn } from './variants';
 import axios from 'axios';
 
 export default function WeatherPage() {
+  let [weatherData, setWeatherData] = useState('');
   useEffect(() => {
     const source = axios.CancelToken.source();
     async function fetchData() {
@@ -26,7 +27,7 @@ export default function WeatherPage() {
           cancelToken: source.token
         });
         const weatherData = response.data;
-        console.log(weatherData);
+        setWeatherData(weatherData);
       } catch (error) {
         if (axios.isCancel(error)) {
           // Handle if request was cancelled
@@ -44,6 +45,7 @@ export default function WeatherPage() {
     };
   }, []);
 
+  console.log(weatherData);
   return (
     <>
       <div className="content">
@@ -63,9 +65,15 @@ export default function WeatherPage() {
             <div className="search-field">
               <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
                 <a onClick={'s'}>
-                  <SearchIcon sx={{ color: 'action.active', mr: 1 }} />
+                  <SearchIcon sx={{ color: 'action.active', mr: 1, height: '30px' }} />
                 </a>
-                <TextField id="input-with-sx" label="Enter a City" variant="standard" />
+                <TextField
+                  id="outlined-search"
+                  label="City, State"
+                  type="search"
+                  className="searchbox"
+                  size="small"
+                />
               </Box>
             </div>
           </motion.div>
