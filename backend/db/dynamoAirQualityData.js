@@ -20,7 +20,7 @@ async function getDynamoAirQualityData(city) {
 async function storeDynamoAirQualityData(airQualityData, city) {
   const params = {
     TableName: 'airQualityData',
-    Item: { airQualityData, city: city }
+    Item: { airQualityData, city: city, ttl: Math.floor(Date.now() / 1000) + 3600 }
   };
 
   try {

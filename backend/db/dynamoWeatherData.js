@@ -20,7 +20,7 @@ async function getDynamoWeatherData(city) {
 async function storeDynamoWeatherData(weatherData, city) {
   const params = {
     TableName: 'weatherData',
-    Item: { weatherData, city: city }
+    Item: { weatherData, city: city, ttl: Math.floor(Date.now() / 1000) + 3600 }
   };
 
   try {
