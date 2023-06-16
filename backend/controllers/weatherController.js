@@ -5,7 +5,7 @@ const { StatusCodes } = require('http-status-codes');
 // lazy loading
 const getWeather = async (req, res) => {
   const { city, state } = req.body;
-
+  // validator
   let weatherData = await getDynamoWeatherData(city);
   if (weatherData) {
     console.log('data in db');
