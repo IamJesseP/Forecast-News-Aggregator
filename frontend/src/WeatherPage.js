@@ -1,5 +1,5 @@
 // React
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import WeatherHero from './WeatherHero';
 import Forecast from './Forecast';
 import Headlines from './Headlines';
@@ -18,32 +18,55 @@ import { fadeIn } from './variants';
 import axios from 'axios';
 
 export default function WeatherPage() {
-  let [weatherData, setWeatherData] = useState('');
-  useEffect(() => {
-    const source = axios.CancelToken.source();
-    async function fetchData() {
-      try {
-        const response = await axios.get('http://localhost:4000/weather', {
-          cancelToken: source.token
-        });
-        const weatherData = response.data;
-        setWeatherData(weatherData);
-      } catch (error) {
-        if (axios.isCancel(error)) {
-          // Handle if request was cancelled
-          console.log('Request cancelled', error.message);
-        } else {
-          // Handle usual errors
-          console.log('Something went wrong: ', error.message);
+  const [weatherData, setWeatherData] = useState('');
+  const [searchedCity, setSearchedCity] = useState('San Diego');
+  const [searchQuery, setSearchQuery] = useState('');
+  const source = axios.CancelToken.source();
+
+  async function fetchData(city, state) {
+    try {
+      const response = await axios.get('http://localhost:4000/weather', {
+        cancelToken: source.token,
+        params: {
+          city: city,
+          state: state
         }
+      });
+      const weatherData = response.data;
+      setWeatherData(weatherData);
+    } catch (error) {
+      if (axios.isCancel(error)) {
+        // Handle if request was cancelled
+        console.log('Request cancelled', error.message);
+      } else {
+        // Handle usual errors
+        console.log('Something went wrong: ', error.message);
       }
     }
-    fetchData();
+  }
+  useEffect(() => {
+    fetchData('');
     // Cleanup function to cancel request on unmount
     return () => {
       source.cancel('Operation canceled by the user.');
     };
   }, []);
+
+  async function handleSearch() {
+    let searchArray;
+    if (searchQuery.includes(',')) {
+      searchArray = searchQuery.split(',');
+    } else if (searchQuery.includes(' ')) {
+      searchArray = searchQuery.split(' ');
+    }
+    if (!searchArray || searchArray.length !== 2) {
+      console.log('Please provide City and State separated by a comma or a space');
+      return;
+    }
+    let city = searchArray[0].trim();
+    let state = searchArray[1].trim();
+    fetchData(city, state);
+  }
 
   console.log(weatherData);
   return (
@@ -64,8 +87,10 @@ export default function WeatherPage() {
             </div>
             <div className="search-field">
               <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
-                <a onClick={'s'}>
-                  <SearchIcon sx={{ color: 'action.active', mr: 1, height: '30px' }} />
+                <a onClick={handleSearch}>
+                  <SearchIcon
+                    sx={{ color: 'action.active', mr: 1, height: '30px', cursor: 'pointer' }}
+                  />
                 </a>
                 <TextField
                   id="outlined-search"
@@ -73,6 +98,14 @@ export default function WeatherPage() {
                   type="search"
                   className="searchbox"
                   size="small"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  onKeyPress={(e) => {
+                    if (e.key === 'Enter') {
+                      e.preventDefault();
+                      handleSearch();
+                    }
+                  }}
                 />
               </Box>
             </div>

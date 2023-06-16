@@ -4,7 +4,7 @@ const { StatusCodes } = require('http-status-codes');
 
 // lazy loading
 const getWeather = async (req, res) => {
-  let { city, state } = req.body;
+  let { city, state } = req.query;
   // validator
   if (!city || !state) {
     city = 'San Diego';

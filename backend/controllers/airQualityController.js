@@ -7,7 +7,7 @@ const { StatusCodes } = require('http-status-codes');
 
 // lazy loading
 const getAirQuality = async (req, res) => {
-  let { city, state } = req.body;
+  let { city, state } = req.query;
   // validators
   if (!city || !state) {
     city = 'San Diego';
