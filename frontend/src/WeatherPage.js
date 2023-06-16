@@ -5,6 +5,7 @@ import Forecast from './Forecast';
 import Headlines from './Headlines';
 import Notify from './Notify';
 import Nav from './Nav';
+import Greet from './utils/Greet';
 import './styles.css';
 // Material UI
 import Box from '@mui/material/Box';
@@ -57,11 +58,11 @@ export default function WeatherPage() {
             whileInView={'show'}
             viewport={{ once: false, amount: 0.5 }}>
             <div className="greeting">
-              <h1>Good Morning!</h1>{' '}
+              <h1>{Greet()}</h1>
             </div>
             <div className="search-field">
               <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
-                <a href="#">
+                <a onClick={'s'}>
                   <SearchIcon sx={{ color: 'action.active', mr: 1 }} />
                 </a>
                 <TextField id="input-with-sx" label="Enter a City" variant="standard" />
