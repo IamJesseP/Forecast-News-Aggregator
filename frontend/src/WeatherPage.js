@@ -56,7 +56,7 @@ export default function WeatherPage() {
           <Forecast />
         </motion.div>
         <div className="spacer">
-          <Spline scene="https://prod.spline.design/r7dtNZJx8L-6P264/scene.splinecode" />
+          {/* <Spline scene="https://prod.spline.design/r7dtNZJx8L-6P264/scene.splinecode" /> */}
         </div>
         <motion.div
           className="weather"
