@@ -82,6 +82,15 @@ nav {
 .spacer {
   height: 500px;
 }
+
+.active {
+  background: rgba(174, 173, 173, 0.08);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  -webkit-backdrop-filter: blur(2.4px);
+  border: 1px solid rgba(174, 173, 173, 0.3);
+  border-radius: 12px;
+}
 /* ---------hero-------- */
 .weather {
   display: flex;

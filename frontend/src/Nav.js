@@ -15,7 +15,7 @@ export default function Nav() {
             activeClass="active"
             smooth={true}
             spy={true}
-            offset={0}
+            offset={-50}
             className="nav-item">
             <WbSunnyIcon />
           </Link>
