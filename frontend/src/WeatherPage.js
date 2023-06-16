@@ -7,6 +7,7 @@ import Box from '@mui/material/Box';
 import Nav from './Nav';
 import SearchIcon from '@mui/icons-material/Search';
 import { TextField } from '@mui/material';
+import Spline from '@splinetool/react-spline';
 import './styles.css';
 
 export default function WeatherPage() {
@@ -37,7 +38,9 @@ export default function WeatherPage() {
         <div className="weather">
           <Forecast />
         </div>
-        <div className="spacer"></div>
+        <div className="spacer">
+          <Spline scene="https://prod.spline.design/r7dtNZJx8L-6P264/scene.splinecode" />
+        </div>
         <div className="weather" id="news">
           <Headlines />
         </div>
