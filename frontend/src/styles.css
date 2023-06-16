@@ -7,6 +7,7 @@
 }
 body {
   background: linear-gradient(112.1deg, #202639 11.4%, #3f4c77 70.2%);
+  min-height: 100vh;
 }
 .content {
   display: flex;
@@ -68,14 +69,16 @@ body {
   flex-direction: row;
   width: 100%;
   max-width: 1340px;
-  padding: 0 20px;
+  padding: 20px;
 }
 .forecast-left {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
   height: 350px;
   width: 55%;
-  margin-right: 60px;
+  margin-right: 40px;
 }
 .forecast-right {
   display: flex;
@@ -84,7 +87,6 @@ body {
 }
 .card-left {
   padding: 20px;
-  margin-top: 20px;
   height: 100%;
   background: rgba(174, 173, 173, 0.08);
   border-radius: 16px;
@@ -95,9 +97,8 @@ body {
 }
 .card-right {
   padding: 20px;
-  height: calc(100% - 60px);
+  height: calc(100% - 40px);
   width: 100%;
-  margin-top: 20px;
   background: rgba(174, 173, 173, 0.08);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -116,6 +117,20 @@ body {
 
 /* ----------Mobile Devices----------- */
 @media only screen and (max-width: 768px) {
+  .greeting {
+    display: flex;
+    justify-content: center;
+  }
+  .search-field {
+    display: flex;
+    justify-content: center;
+  }
+  .navbar {
+    padding-top: 10px;
+  }
+  .container {
+    flex-direction: column;
+  }
   .navbar h1 {
     font-size: 20px;
     font-weight: 300;
@@ -123,16 +138,21 @@ body {
   #outlined-search {
     width: 40%;
   }
+  .hero {
+    padding: 10px 20px;
+  }
   .forecast {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    gap: 20px;
     height: 560px;
-    margin-bottom: 20px;
+    padding: 10px 20px;
   }
   .forecast-left {
     flex-direction: row;
     justify-content: space-between;
-    gap: 30px;
+    gap: 20px;
     height: 100%;
     max-height: 200px;
     width: 100%;
@@ -151,5 +171,8 @@ body {
   .card-right {
     width: calc(100% - 40px);
     height: 300px;
+  }
+  .news {
+    padding: 10px 20px;
   }
 }
