@@ -4,8 +4,12 @@ const { StatusCodes } = require('http-status-codes');
 
 // lazy loading
 const getWeather = async (req, res) => {
-  const { city, state } = req.body;
+  let { city, state } = req.body;
   // validator
+  if (!city || !state) {
+    city = 'San Diego';
+    state = 'California';
+  }
   let weatherData = await getDynamoWeatherData(city);
   if (weatherData) {
     console.log('data in db');

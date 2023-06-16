@@ -7,8 +7,12 @@ const { StatusCodes } = require('http-status-codes');
 
 // lazy loading
 const getAirQuality = async (req, res) => {
-  const { city, state } = req.body;
+  let { city, state } = req.body;
   // validators
+  if (!city || !state) {
+    city = 'San Diego';
+    state = 'California';
+  }
   let airQualityData = await getDynamoAirQualityData(city);
   if (airQualityData) {
     console.log('data in db');
