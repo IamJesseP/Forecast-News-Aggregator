@@ -16,7 +16,7 @@ export default function WeatherPage() {
         <div>
           <Nav />
         </div>
-        <div className="navbar">
+        <div className="navbar" id="weather">
           <div className="container">
             <div className="greeting">
               <h1>Good Morning!</h1>{' '}
@@ -31,7 +31,7 @@ export default function WeatherPage() {
             </div>
           </div>
         </div>
-        <div className="weather" id="weather">
+        <div className="weather">
           <WeatherHero />
         </div>
         <div className="weather">
