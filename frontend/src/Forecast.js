@@ -57,7 +57,38 @@ export default function Forecast({ weatherData }) {
         </div>
       </div>
       <div className="forecast-right">
-        <div className="card-right">Air Quality</div>
+        <div className="card-right">
+          <div className="forecast-graph">top</div>
+          <div className="forecast-week">
+            <div>
+              <p>Mon</p>
+            </div>
+            <div className="forecast-divider"></div>
+            <div>
+              <p>Tue</p>
+            </div>
+            <div className="forecast-divider"></div>
+            <div>
+              <p>Wed</p>
+            </div>
+            <div className="forecast-divider"></div>
+            <div>
+              <p>Thu</p>
+            </div>
+            <div className="forecast-divider"></div>
+            <div>
+              <p>Fri</p>
+            </div>
+            <div className="forecast-divider"></div>
+            <div>
+              <p>Sat</p>
+            </div>
+            <div className="forecast-divider"></div>
+            <div>
+              <p>Sun</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
