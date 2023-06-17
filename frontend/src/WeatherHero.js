@@ -19,7 +19,7 @@ export default function WeatherHero({ weatherData, city }) {
 
   // Cloudy Checker
   let cloudWeather;
-  let cloudCoverArray = weatherData?.weatherData?.hourly?.cloudcover;
+  let cloudCoverArray = weatherData?.weatherData?.hourly?.cloudcover.slice(0, 24);
   let cloudSum = cloudCoverArray.reduce((a, b) => a + b, 0);
   let cloudAvg = cloudSum / cloudCoverArray.length;
   // not an actual metric right here:

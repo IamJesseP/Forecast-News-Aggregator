@@ -276,6 +276,10 @@ nav {
   color: black;
   margin-top: 10px;
 }
+
+.forecast-week-column > div > img {
+  width: 35px;
+}
 .card-left-1 {
   display: flex;
   padding: 20px;
