@@ -1,4 +1,4 @@
-const axios = require("axios");
+const axios = require('axios');
 
 const url = `https://newsapi.org/v2/top-headlines?country=us&q=${city} weather&apiKey=${NEWS_API_KEY}&`;
 

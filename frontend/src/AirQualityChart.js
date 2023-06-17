@@ -1,6 +1,9 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import { Bar, Line } from 'react-chartjs-2';
+import { CategoryScale, Chart } from 'chart.js/auto';
+
+Chart.register(CategoryScale);
 
 export default function AirQualityChart({ airQualityData }) {
   const rawTimes = airQualityData?.airQualityData?.hourly?.time;
@@ -15,13 +18,14 @@ export default function AirQualityChart({ airQualityData }) {
     labels: times,
     datasets: [
       {
-        label: 'PM10',
+        label: 'US AQI',
         data: pm10Values,
-        backgroundColor: 'rgba(75,192,192,0.4)',
-        borderColor: 'rgba(75,192,192,1)',
+        backgroundColor: 'white',
+        borderColor: 'black',
         borderWidth: 1,
-        hoverBackgroundColor: 'rgba(75,192,192,0.7)',
-        hoverBorderColor: 'rgba(75,192,192,1)'
+        hoverBackgroundColor: 'rgba(61, 115, 148, 0.911)',
+        hoverBorderColor: 'rgba(61, 115, 148, 0.911)',
+        fill: false
       }
     ]
   };
@@ -30,14 +34,20 @@ export default function AirQualityChart({ airQualityData }) {
       x: {
         ticks: {
           maxRotation: 0,
-          autoSkip: true
+          autoSkip: true,
+          autoSkipPadding: 15
         }
       }
     }
   };
   return (
-    <div style={{ width: '100%', height: '300px' }}>
-      <Line data={data} options={options} />;
-    </div>
+    <>
+      <div style={{ height: '10%' }}>
+        <h2 style={{ color: 'black' }}>Air Quality Index</h2>
+      </div>
+      <div style={{ width: '100%', height: '90%' }}>
+        <Line data={data} options={options} />;
+      </div>
+    </>
   );
 }

@@ -16,7 +16,7 @@ body {
 }
 /* ---------navigation---------- */
 .navbar {
-  margin-top: 50px;
+  margin-top: 15px;
   padding: 20px;
   padding-bottom: 0;
   display: flex;
@@ -183,7 +183,7 @@ nav {
 /* -----------forecast---------- */
 .forecast {
   display: flex;
-  height: 800px;
+  height: 500px;
   flex-direction: row;
   width: 100%;
   max-width: 1340px;
@@ -214,19 +214,19 @@ nav {
   justify-content: space-between;
 
   gap: 20px;
-  height: 350px;
+  height: 450px;
   width: 55%;
   margin-right: 40px;
 }
 .forecast-right {
   display: flex;
-  height: 350px;
+  height: 440px;
   width: 100%;
 }
 
 .forecast-graph {
   width: 100%;
-  height: 50%;
+  height: 60%;
   overflow-x: scroll;
 }
 
@@ -241,8 +241,8 @@ nav {
   align-items: center;
   justify-content: space-around;
   width: 100%;
-  height: 50%;
-  margin: 0px 12px;
+  height: 40%;
+  margin: 10px 12px;
 }
 
 .forecast-week > div {
@@ -275,7 +275,7 @@ nav {
   padding: 20px;
   height: 40%;
   flex-direction: row;
-  background: hsla(203, 42%, 41%, 0.911);
+  background: rgba(61, 115, 148, 0.911);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   -webkit-backdrop-filter: blur(2.4px);

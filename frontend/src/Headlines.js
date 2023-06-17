@@ -12,7 +12,7 @@ import Typography from '@mui/material/Typography';
 import './styles.css';
 
 const city = 'miami';
-const url = `https://newsapi.org/v2/everything?q=${city}&apiKey=APIKEY`;
+const url = `https://newsapi.org/v2/everything?q=${city}&apiKey=APIKey`;
 
 // eslint-disable-next-line react/prop-types
 export default function Headlines({ searchedCity }) {
