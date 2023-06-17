@@ -1,13 +1,11 @@
 /* eslint-disable react/prop-types */
-import { Container } from '@mui/material';
-import WbSunnyIcon from '@mui/icons-material/WbSunny';
-import WbTwilightIcon from '@mui/icons-material/WbTwilight';
 import forecastSun from './assets/forecast-sun.png';
 import forecastSunrise from './assets/forecast-sunrise.png';
 import forecastSunset from './assets/forecast-sunset.png';
 import dailyRain from './assets/daily-rain.png';
 import React from 'react';
 import AirQualityChart from './AirQualityChart';
+import windyIcon from './assets/windyIcon.png';
 
 export default function Forecast({ weatherData, airQualityData }) {
   // Sunrise and Sunset
@@ -63,32 +61,60 @@ export default function Forecast({ weatherData, airQualityData }) {
             <AirQualityChart airQualityData={airQualityData} />
           </div>
           <div className="forecast-week">
-            <div>
+            <div className="forecast-week-column">
               <p>Mon</p>
+              <div>
+                <img src={windyIcon} width="30px"></img>
+                <h2>23°</h2>
+              </div>
             </div>
             <div className="forecast-divider"></div>
-            <div>
+            <div className="forecast-week-column">
               <p>Tue</p>
+              <div>
+                <img src={windyIcon} width="30px"></img>
+                <h2>23°</h2>
+              </div>
             </div>
             <div className="forecast-divider"></div>
-            <div>
+            <div className="forecast-week-column">
               <p>Wed</p>
+              <div>
+                <img src={windyIcon} width="30px"></img>
+                <h2>23°</h2>
+              </div>
             </div>
             <div className="forecast-divider"></div>
-            <div>
+            <div className="forecast-week-column">
               <p>Thu</p>
+              <div>
+                <img src={windyIcon} width="30px"></img>
+                <h2>23°</h2>
+              </div>
             </div>
             <div className="forecast-divider"></div>
-            <div>
+            <div className="forecast-week-column">
               <p>Fri</p>
+              <div>
+                <img src={windyIcon} width="30px"></img>
+                <h2>23°</h2>
+              </div>
             </div>
             <div className="forecast-divider"></div>
-            <div>
+            <div className="forecast-week-column">
               <p>Sat</p>
+              <div>
+                <img src={windyIcon} width="30px"></img>
+                <h2>23°</h2>
+              </div>
             </div>
             <div className="forecast-divider"></div>
-            <div>
+            <div className="forecast-week-column">
               <p>Sun</p>
+              <div>
+                <img src={windyIcon} width="30px"></img>
+                <h2>23°</h2>
+              </div>
             </div>
           </div>
         </div>

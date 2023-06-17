@@ -245,9 +245,7 @@ nav {
   margin: 10px 12px;
 }
 
-.forecast-week > div {
-  height: 100%;
-
+.forecast-week > div > p {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -258,6 +256,26 @@ nav {
   color: black;
 }
 
+.forecast-week-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+  height: 100%;
+}
+
+.forecast-week-column > div {
+  flex-direction: column;
+  width: 100%;
+  height: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.forecast-week-column > div > h2 {
+  color: black;
+  margin-top: 10px;
+}
 .card-left-1 {
   display: flex;
   padding: 20px;
