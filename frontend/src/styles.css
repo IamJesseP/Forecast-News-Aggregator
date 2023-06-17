@@ -192,8 +192,22 @@ nav {
 }
 
 .forecast-uv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
   width: 45%;
   height: 100%;
+  margin: 6px;
+}
+.forecast-uv > div > h2 {
+  font-size: 1.2rem;
+  color: black;
+}
+
+.forecast-uv > div > h3 {
+  font-size: 1rem;
+  color: black;
 }
 .forecast-left {
   display: flex;
@@ -209,12 +223,24 @@ nav {
   height: 350px;
   width: 100%;
 }
-.card-left {
+.card-left-1 {
   display: flex;
   padding: 20px;
   height: 100%;
   flex-direction: row;
-  background: rgba(174, 173, 173, 0.08);
+  background: rgba(255, 255, 255, 0.904);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  -webkit-backdrop-filter: blur(2.4px);
+  border: 1px solid rgba(174, 173, 173, 0.3);
+  border-radius: 25px;
+}
+.card-left-2 {
+  display: flex;
+  padding: 20px;
+  height: 100%;
+  flex-direction: row;
+  background: hsla(203, 41%, 47%, 0.911);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   -webkit-backdrop-filter: blur(2.4px);
@@ -225,7 +251,7 @@ nav {
   padding: 20px;
   height: calc(100% - 40px);
   width: 100%;
-  background: rgba(174, 173, 173, 0.08);
+  background: rgba(255, 255, 255, 0.904);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   -webkit-backdrop-filter: blur(2.4px);
@@ -242,13 +268,21 @@ nav {
   gap: 6px;
   width: 45%;
   height: 100%;
+  margin: 6px;
+}
+
+.forecast-divider {
+  border-left: 2px solid rgba(0, 0, 0, 0.664);
+  height: 100%;
 }
 
 .forecast-sun-time > h2 {
   display: flex;
   align-items: center;
   justify-self: flex-end;
+  font-size: 1.2rem;
   gap: 6px;
+  color: black;
 }
 /* ---------News----------- */
 .news {
