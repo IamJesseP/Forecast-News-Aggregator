@@ -19,6 +19,7 @@ import axios from 'axios';
 
 export default function WeatherPage() {
   const [weatherData, setWeatherData] = useState('');
+  const [airQualityData, setAirQualityData] = useState('');
   const [searchedCity, setSearchedCity] = useState('San Diego');
   const [searchQuery, setSearchQuery] = useState('');
   const [isLoading, setIsLoading] = useState(true);
@@ -26,17 +27,29 @@ export default function WeatherPage() {
 
   async function fetchData(city, state) {
     try {
-      const response = await axios.get('http://localhost:4000/weather', {
+      // Weather Data
+      const weatherResponse = await axios.get('http://localhost:4000/weather', {
         cancelToken: source.token,
         params: {
           city: city,
           state: state
         }
       });
-      const weatherData = response.data;
+      const weatherData = weatherResponse.data;
       setWeatherData(weatherData);
+      // Air Quality Data
+      const airQualityResponse = await axios.get('http://localhost:4000/airquality', {
+        cancelToken: source.token,
+        params: {
+          city: city,
+          state: state
+        }
+      });
+      const airQualityData = airQualityResponse.data;
+      setAirQualityData(airQualityData);
       setIsLoading(false);
       console.log(weatherData);
+      console.log(airQualityData);
     } catch (error) {
       if (axios.isCancel(error)) {
         // Handle if request was cancelled
@@ -128,7 +141,7 @@ export default function WeatherPage() {
           initial="hidden"
           whileInView={'show'}
           viewport={{ once: false, amount: 0.5 }}>
-          {!isLoading && <Forecast weatherData={weatherData} />}
+          {!isLoading && <Forecast weatherData={weatherData} airQualityData={airQualityData} />}
         </motion.div>
         <div className="spacer"></div>
         <motion.div
