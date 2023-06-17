@@ -7,8 +7,9 @@ import forecastSunrise from './assets/forecast-sunrise.png';
 import forecastSunset from './assets/forecast-sunset.png';
 import dailyRain from './assets/daily-rain.png';
 import React from 'react';
+import AirQualityChart from './AirQualityChart';
 
-export default function Forecast({ weatherData }) {
+export default function Forecast({ weatherData, airQualityData }) {
   // Sunrise and Sunset
   let sunriseArray = weatherData?.weatherData?.daily?.sunrise;
   let sunsetArray = weatherData?.weatherData?.daily?.sunset;
@@ -58,7 +59,9 @@ export default function Forecast({ weatherData }) {
       </div>
       <div className="forecast-right">
         <div className="card-right">
-          <div className="forecast-graph">top</div>
+          <div className="forecast-graph">
+            <AirQualityChart airQualityData={airQualityData} />
+          </div>
           <div className="forecast-week">
             <div>
               <p>Mon</p>
