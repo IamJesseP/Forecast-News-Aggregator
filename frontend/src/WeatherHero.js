@@ -19,7 +19,7 @@ export default function WeatherHero({ weatherData, city }) {
 
   // Cloudy Checker
   let cloudWeather;
-  let cloudCoverArray = weatherData?.weatherData?.hourly?.cloudcover_high;
+  let cloudCoverArray = weatherData?.weatherData?.hourly?.cloudcover;
   let cloudSum = cloudCoverArray.reduce((a, b) => a + b, 0);
   let cloudAvg = cloudSum / cloudCoverArray.length;
   // not an actual metric right here:
@@ -31,11 +31,9 @@ export default function WeatherHero({ weatherData, city }) {
 
   // Rainy Checker
   let rainWeather;
-  let rainCoverArray = weatherData?.weatherData?.hourly?.rain;
-  let rainSum = rainCoverArray.reduce((a, b) => a + b, 0);
-  let rainAvg = rainSum / rainCoverArray.length;
+  let rainCover = weatherData?.weatherData?.daily?.rain_sum[0];
   // not an actual metric right here:
-  if (rainAvg <= 0.004) {
+  if (rainCover <= 0.004) {
     rainWeather = false;
   } else {
     rainWeather = true;
@@ -43,11 +41,9 @@ export default function WeatherHero({ weatherData, city }) {
 
   // Snowy Checker
   let snowWeather;
-  let snowCoverArray = weatherData?.weatherData?.hourly?.snowfall;
-  let snowSum = snowCoverArray.reduce((a, b) => a + b, 0);
-  let snowAvg = snowSum / snowCoverArray.length;
+  let snowCover = weatherData?.weatherData?.daily?.snowfall_sum[0];
   // not an actual metric right here:
-  if (snowAvg <= 15) {
+  if (snowCover <= 15) {
     snowWeather = false;
   } else {
     snowWeather = true;
