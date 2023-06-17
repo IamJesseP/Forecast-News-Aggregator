@@ -427,7 +427,7 @@ nav {
     flex-direction: column;
     justify-content: space-between;
     gap: 20px;
-    height: 620px;
+    height: 625px;
     padding: 10px 20px;
   }
   .forecast-left {
@@ -451,7 +451,7 @@ nav {
   }
   .card-right {
     width: calc(100% - 40px);
-    height: 300px;
+    height: 800px;
   }
 
   nav {
