@@ -128,7 +128,7 @@ export default function WeatherPage() {
           initial="hidden"
           whileInView={'show'}
           viewport={{ once: false, amount: 0.5 }}>
-          <Forecast />
+          {!isLoading && <Forecast weatherData={weatherData} />}
         </motion.div>
         <div className="spacer"></div>
         <motion.div

@@ -167,21 +167,6 @@ nav {
   max-width: 300px;
   max-height: 100px;
 }
-.hero-sun-time {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  margin-left: 24px;
-  gap: 6px;
-}
-
-.hero-sun-time > h2 {
-  display: flex;
-  align-items: center;
-  justify-self: flex-end;
-  gap: 6px;
-  padding-right: 12px;
-}
 .hero-low-high {
   display: flex;
   flex-direction: row;
@@ -205,6 +190,11 @@ nav {
   max-width: 1340px;
   padding: 20px;
 }
+
+.forecast-uv {
+  width: 45%;
+  height: 100%;
+}
 .forecast-left {
   display: flex;
   flex-direction: column;
@@ -220,8 +210,10 @@ nav {
   width: 100%;
 }
 .card-left {
+  display: flex;
   padding: 20px;
   height: 100%;
+  flex-direction: row;
   background: rgba(174, 173, 173, 0.08);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -241,6 +233,23 @@ nav {
   border-radius: 25px;
 }
 
+.forecast-sun-time {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 6px;
+  width: 45%;
+  height: 100%;
+}
+
+.forecast-sun-time > h2 {
+  display: flex;
+  align-items: center;
+  justify-self: flex-end;
+  gap: 6px;
+}
 /* ---------News----------- */
 .news {
   height: 300px;
