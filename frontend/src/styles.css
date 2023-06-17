@@ -301,10 +301,32 @@ nav {
 }
 /* ---------News----------- */
 .news {
-  height: 300px;
+  display: flex;
+  height: 500px;
   width: 100%;
-  max-width: 1340px;
+  justify-content: center;
   padding: 20px;
+}
+.news-section {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.headlines {
+  height: 100%;
+  max-width: 1340px;
+}
+.headlines > ul {
+  height: 100%;
+  justify-content: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 20px;
+}
+.headlines > ul > li {
+  height: 400px;
+  display: flex;
+  align-items: top;
 }
 
 /* ---------Notify----------- */
