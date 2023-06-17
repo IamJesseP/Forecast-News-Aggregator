@@ -1,13 +1,10 @@
 const axios = require('axios');
+require('dotenv').config();
 
-const url = `https://newsapi.org/v2/top-headlines?country=us&q=${city} weather&apiKey=${NEWS_API_KEY}&`;
-
-async function fetchNewsAPI(url) {
+async function fetchNewsAPI(city) {
   try {
+    const url = `https://newsapi.org/v2/everything?q=${city}&apiKey=${process.env.NEWS_API_KEY}`;
     const response = await axios.get(url);
-    // const geocode = await getGeocode(location);
-    // const response = await axios.get(
-    //   `https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${geocode.latitude}&longitude=${geocode.longitude}&hourly=pm10,pm2_5,us_aqi&timezone=auto`
     const data = response.data;
     return data;
   } catch (error) {

@@ -20,6 +20,7 @@ import axios from 'axios';
 export default function WeatherPage() {
   const [weatherData, setWeatherData] = useState('');
   const [airQualityData, setAirQualityData] = useState('');
+  const [newsData, setNewsData] = useState('');
   const [searchedCity, setSearchedCity] = useState('San Diego');
   const [searchQuery, setSearchQuery] = useState('');
   const [isLoading, setIsLoading] = useState(true);
@@ -47,9 +48,20 @@ export default function WeatherPage() {
       });
       const airQualityData = airQualityResponse.data;
       setAirQualityData(airQualityData);
+      // News Data
+      const newsResponse = await axios.get('http://localhost:4000/news', {
+        cancelToken: source.token,
+        params: {
+          city: city,
+          state: state
+        }
+      });
+      const newsData = newsResponse.data;
+      setNewsData(newsData);
       setIsLoading(false);
       console.log(weatherData);
       console.log(airQualityData);
+      console.log(newsData);
     } catch (error) {
       if (axios.isCancel(error)) {
         // Handle if request was cancelled
@@ -151,7 +163,7 @@ export default function WeatherPage() {
           initial="hidden"
           whileInView={'show'}
           viewport={{ once: false, amount: 0.5 }}>
-          {!isLoading && <Headlines city={searchedCity} />}
+          {!isLoading && <Headlines city={searchedCity} newsData={newsData} />}
         </motion.div>
         <div className="spacer"></div>
         <motion.div

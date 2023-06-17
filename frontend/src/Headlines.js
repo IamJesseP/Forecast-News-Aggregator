@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
@@ -11,30 +12,29 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import './styles.css';
 
-const city = 'miami';
-const url = `https://newsapi.org/v2/everything?q=${city}&apiKey=APIKey`;
+// const city = 'miami';
+// const url = `https://newsapi.org/v2/everything?q=${city}&apiKey=APIKey`;
 
-// eslint-disable-next-line react/prop-types
-export default function Headlines({ searchedCity }) {
-  // const city = 'miami';
-  // const url = `https://newsapi.org/v2/everything?q=${searchedCity}&apiKey=APIKEY`;
-  const [articles, setArticles] = useState([]);
+// // eslint-disable-next-line react/prop-types
+//   // const city = 'miami';
+//   // const url = `https://newsapi.org/v2/everything?q=${searchedCity}&apiKey=APIKEY`;
+//   const [articles, setArticles] = useState([]);
+// useEffect(() => {
+//   axios
+//     .get(url)
+//     .then((response) => {
+//       // Process the data returned by the API
+//       const data = response.data;
+//       setArticles(data.articles);
+//     })
+//     .catch((error) => {
+//       // Handle any errors that occur during the API request
+//       console.error('Error:', error);
+//     });
+// }, []);
+
+export default function Headlines({ newsData }) {
   const { scrollRef } = useSnapCarousel();
-
-  useEffect(() => {
-    axios
-      .get(url)
-      .then((response) => {
-        // Process the data returned by the API
-        const data = response.data;
-        setArticles(data.articles);
-      })
-      .catch((error) => {
-        // Handle any errors that occur during the API request
-        console.error('Error:', error);
-      });
-  }, []);
-
   return (
     <div className="news-section">
       <div className="headlines">
@@ -45,7 +45,7 @@ export default function Headlines({ searchedCity }) {
             overflow: 'auto',
             scrollSnapType: 'x mandatory'
           }}>
-          {articles.slice(0, 10).map((article, index) => (
+          {newsData.newsData.articles.slice(0, 10).map((article, index) => (
             <li
               key={index}
               style={{
