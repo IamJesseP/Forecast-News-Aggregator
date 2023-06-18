@@ -13,12 +13,14 @@ const weatherRouter = require('./routes/weatherRoutes');
 const airQualtiyRouter = require('./routes/airQualityRoutes');
 const newsRouter = require('./routes/newsRoutes');
 const phoneRouter = require('./routes/phoneRoutes');
+const openaiRouter = require('./routes/openaiRoutes');
 
 // Endpoints
 app.use('/weather', weatherRouter);
 app.use('/airquality', airQualtiyRouter);
 app.use('/news', newsRouter);
 app.use('/phone', phoneRouter);
+app.use('/openai', openaiRouter);
 
 // Start the server
 const port = process.env.PORT || 4000;
