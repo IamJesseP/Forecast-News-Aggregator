@@ -51,15 +51,15 @@ export default function WeatherHero({ weatherData, city }) {
   return (
     <motion.div
       className="hero"
-      variants={fadeIn('right', 0.3)}
-      initial="hidden"
+      // variants={fadeIn('right', 0.3)}
+      // initial="hidden"
       whileInView={'show'}
       viewport={{ once: false, amount: 0.5 }}>
       <div className="hero-card">
         <motion.div
           className="hero-container-1"
-          variants={fadeIn('right', 0.3)}
-          initial="hidden"
+          // variants={fadeIn('right', 0.3)}
+          // initial="hidden"
           whileInView={'show'}
           viewport={{ once: false, amount: 0.5 }}>
           <h1>{city}</h1>
@@ -71,8 +71,8 @@ export default function WeatherHero({ weatherData, city }) {
         </motion.div>
         <div className="hero-container-2">
           <motion.div
-            variants={fadeIn('right', 0.3)}
-            initial="hidden"
+            // variants={fadeIn('right', 0.3)}
+            // initial="hidden"
             whileInView={'show'}
             viewport={{ once: false, amount: 0.5 }}>
             {!cloudWeather && !rainWeather && !snowWeather && <img src={sunny}></img>}

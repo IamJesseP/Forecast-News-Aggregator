@@ -12,31 +12,11 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import './styles.css';
 
-// const city = 'miami';
-// const url = `https://newsapi.org/v2/everything?q=${city}&apiKey=APIKey`;
-
-// // eslint-disable-next-line react/prop-types
-//   // const city = 'miami';
-//   // const url = `https://newsapi.org/v2/everything?q=${searchedCity}&apiKey=APIKEY`;
-//   const [articles, setArticles] = useState([]);
-// useEffect(() => {
-//   axios
-//     .get(url)
-//     .then((response) => {
-//       // Process the data returned by the API
-//       const data = response.data;
-//       setArticles(data.articles);
-//     })
-//     .catch((error) => {
-//       // Handle any errors that occur during the API request
-//       console.error('Error:', error);
-//     });
-// }, []);
-
 export default function Headlines({ newsData }) {
   const { scrollRef } = useSnapCarousel();
   return (
     <div className="news-section">
+      <h1 className="news-title">News</h1>
       <div className="headlines">
         <ul
           ref={scrollRef}
@@ -59,16 +39,23 @@ export default function Headlines({ newsData }) {
               }}>
               <Card sx={{ maxWidth: 345 }}>
                 <CardMedia component="img" alt="" height="140" image={article.urlToImage} />
-                <CardContent>
-                  <Typography gutterBottom variant="h5" color="text.secondary" component="div">
+                <CardContent className="card-body">
+                  <Typography
+                    className="article-title"
+                    gutterBottom
+                    color="text.secondary"
+                    component="div"
+                    style={{ fontSize: '18px', fontFamily: 'Montserrat, sans-serif' }}>
                     {article.title}
                   </Typography>
-                  <Typography variant="body2" color="text.secondary">
+                  <Typography
+                    className="article-description"
+                    variant="body2"
+                    color="text.secondary">
                     {article.description}
                   </Typography>
                 </CardContent>
                 <CardActions>
-                  <Button size="small">Share</Button>
                   <Button size="small" target="blank" href={article.url} rel="noopener noreferrer">
                     Learn More
                   </Button>

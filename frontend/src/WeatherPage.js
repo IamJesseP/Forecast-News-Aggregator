@@ -106,8 +106,8 @@ export default function WeatherPage() {
         <div className="navbar" id="weather">
           <motion.div
             className="container"
-            variants={fadeIn('right', 0.3)}
-            initial="hidden"
+            // variants={fadeIn('right', 0.3)}
+            // initial="hidden"
             whileInView={'show'}
             viewport={{ once: false, amount: 0.5 }}>
             <div className="greeting">
@@ -122,7 +122,7 @@ export default function WeatherPage() {
                 </a>
                 <TextField
                   id="outlined-search"
-                  label="City, State"
+                  // label="City, State"
                   type="search"
                   className="searchbox"
                   size="small"
@@ -134,6 +134,10 @@ export default function WeatherPage() {
                       handleSearch();
                     }
                   }}
+                  sx={{
+                    backgroundColor: '#ffffffe7',
+                    borderRadius: '4px'
+                  }}
                 />
               </Box>
             </div>
@@ -141,36 +145,36 @@ export default function WeatherPage() {
         </div>
         <motion.div
           className="weather"
-          variants={fadeIn('right', 0.3)}
-          initial="hidden"
+          // variants={fadeIn('right', 0.3)}
+          // initial="hidden"
           whileInView={'show'}
           viewport={{ once: false, amount: 0.5 }}>
           {!isLoading && <WeatherHero weatherData={weatherData} city={searchedCity} />}
         </motion.div>
         <motion.div
           className="weather"
-          variants={fadeIn('right', 0.3)}
-          initial="hidden"
+          // variants={fadeIn('right', 0.3)}
+          // initial="hidden"
           whileInView={'show'}
           viewport={{ once: false, amount: 0.5 }}>
           {!isLoading && <Forecast weatherData={weatherData} airQualityData={airQualityData} />}
         </motion.div>
-        <div className="spacer"></div>
+        {/* <div className="spacer"></div> */}
         <motion.div
           className="news"
           id="news"
-          variants={fadeIn('right', 0.3)}
-          initial="hidden"
+          // variants={fadeIn('right', 0.3)}
+          // initial="hidden"
           whileInView={'show'}
           viewport={{ once: false, amount: 0.5 }}>
           {!isLoading && <Headlines city={searchedCity} newsData={newsData} />}
         </motion.div>
-        <div className="spacer"></div>
+        {/* <div className="spacer"></div> */}
         <motion.div
           className="weather"
           id="sms"
-          variants={fadeIn('right', 0.3)}
-          initial="hidden"
+          // variants={fadeIn('right', 0.3)}
+          // initial="hidden"
           whileInView={'show'}
           viewport={{ once: false, amount: 0.5 }}>
           <Notify />
