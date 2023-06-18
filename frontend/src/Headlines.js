@@ -10,7 +10,7 @@ import './styles.css';
 
 export default function Headlines({ newsData, city }) {
   return (
-    <div className="news-page">
+    <div className="news-page" id="news">
       <h1 className="news-title">News in {city}</h1>
       <div className="news-section">
         <div

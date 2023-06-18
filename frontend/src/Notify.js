@@ -4,6 +4,7 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import axios from 'axios';
+import Spline from '@splinetool/react-spline';
 
 export default function Notify() {
   const [city, setCity] = useState('');
@@ -30,10 +31,11 @@ export default function Notify() {
 
   return (
     <div className="notify">
-      <div className="notify-title">
-        <h1></h1>
-
-        <h1></h1>
+      <div className="notify-title-2">
+        <h1>Get your weather, 24 hours on the dot.</h1>
+        <div className="notify-clock">
+          <Spline scene="https://prod.spline.design/KhXZgdzD96vatfex/scene.splinecode" />
+        </div>
       </div>
       <div className="notify-card">
         <Box
