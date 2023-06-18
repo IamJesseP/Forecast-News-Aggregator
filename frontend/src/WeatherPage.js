@@ -114,7 +114,7 @@ export default function WeatherPage() {
               <h1>{Greet()}</h1>
             </div>
             <div className="search-field">
-              <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
+              <Box color="white" sx={{ display: 'flex', alignItems: 'flex-end' }}>
                 <a onClick={handleSearch}>
                   <SearchIcon
                     sx={{ color: 'action.active', mr: 1, height: '30px', cursor: 'pointer' }}
@@ -126,8 +126,11 @@ export default function WeatherPage() {
                   type="search"
                   className="searchbox"
                   size="small"
+                  color="white"
                   value={searchQuery}
+                  sx={{ input: { color: '#ffffff' } }}
                   onChange={(e) => setSearchQuery(e.target.value)}
+                  focused
                   onKeyPress={(e) => {
                     if (e.key === 'Enter') {
                       e.preventDefault();
