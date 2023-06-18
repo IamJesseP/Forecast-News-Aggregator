@@ -49,13 +49,16 @@ export default function WeatherPage() {
     try {
       // Weather Data
       const weatherResponse = await axios.get(
-        'https://weather-news-aggr-91e624e25b2e.herokuapp.com/weather',
+        'https://weather-news-aggr-91e624e25b2e.herokuapp.com/weather/',
         {
           withCredentials: false,
           cancelToken: source.token,
           params: {
             city: city,
             state: state
+          },
+          headers: {
+            'Content-Type': 'application/json'
           }
         }
       );
@@ -75,13 +78,16 @@ export default function WeatherPage() {
     try {
       //air quality data
       const airQualityResponse = await axios.get(
-        'https://weather-news-aggr-91e624e25b2e.herokuapp.com/airquality',
+        'https://weather-news-aggr-91e624e25b2e.herokuapp.com/airquality/',
         {
           withCredentials: false,
           cancelToken: source.token,
           params: {
             city: city,
             state: state
+          },
+          headers: {
+            'Content-Type': 'application/json'
           }
         }
       );
@@ -103,13 +109,16 @@ export default function WeatherPage() {
       //air quality data
       // News Data
       const newsResponse = await axios.get(
-        'https://weather-news-aggr-91e624e25b2e.herokuapp.com/news',
+        'https://weather-news-aggr-91e624e25b2e.herokuapp.com/news/',
         {
           withCredentials: false,
           cancelToken: source.token,
           params: {
             city: city,
             state: state
+          },
+          headers: {
+            'Content-Type': 'application/json'
           }
         }
       );
@@ -129,13 +138,16 @@ export default function WeatherPage() {
     try {
       // openai
       const aiResponse = await axios.get(
-        'https://weather-news-aggr-91e624e25b2e.herokuapp.com/openai',
+        'https://weather-news-aggr-91e624e25b2e.herokuapp.com/openai/',
         {
           withCredentials: false,
           cancelToken: source.token,
           params: {
             city: city,
             state: state
+          },
+          headers: {
+            'Content-Type': 'application/json'
           }
         }
       );

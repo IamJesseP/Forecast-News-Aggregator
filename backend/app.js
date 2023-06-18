@@ -9,21 +9,14 @@ const cors = require('cors');
 const expresLimiter = require('express-rate-limit');
 
 var corsOptions = {
-  origin: '*', //  frontend domain
+  origin: 'https://weather-app-six-phi-69.vercel.app', //  frontend domain
   optionsSuccessStatus: 200,
   credentials: false,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH']
 };
-app.use(
-  helmet.contentSecurityPolicy({
-    directives: {
-      defaultSrc: ["'self'", 'https://weather-app-six-phi-69.vercel.app/']
-      //...other directives
-    }
-  })
-);
 
 app.use(cors(corsOptions));
+app.use(helmet());
 app.use(xss());
 app.use(expresLimiter());
 
