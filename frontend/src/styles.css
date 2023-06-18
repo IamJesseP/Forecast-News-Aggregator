@@ -285,7 +285,7 @@ nav {
   padding: 20px;
   height: 100%;
   flex-direction: row;
-  background: rgba(255, 255, 255, 0.904);
+  background: #ffffffe7;
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   -webkit-backdrop-filter: blur(2.4px);
@@ -325,7 +325,7 @@ nav {
   align-items: center;
   justify-content: center;
   padding: 20px;
-  height: calc(100% - 40px);
+  height: calc(100% - 32px);
   width: 100%;
   background: rgba(255, 255, 255, 0.904);
   border-radius: 16px;
@@ -364,22 +364,35 @@ nav {
 .news {
   display: flex;
   height: 500px;
-  width: 100%;
+  width: calc(100%-40px);
   justify-content: center;
   padding: 20px;
 }
 .news-section {
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  width: 100%;
+  max-width: calc(100%-130px);
+  padding: 20px;
+  background: rgba(174, 173, 173, 0.08);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  -webkit-backdrop-filter: blur(2.4px);
+  border: 1px solid rgba(174, 173, 173, 0.3);
+  border-radius: 5px;
+}
+.news-title {
+  margin-bottom: 20px;
 }
 .headlines {
   height: 100%;
   max-width: 1340px;
+  overflow: hidden;
+  width: 100%;
 }
 .headlines > ul {
   height: 100%;
-  justify-content: flex;
+  display: flex;
   flex-direction: row;
   justify-content: space-between;
   gap: 20px;
@@ -389,12 +402,29 @@ nav {
   display: flex;
   align-items: top;
 }
+.card-body {
+  height: 188px;
+  overflow: hidden;
+}
+.article-title {
+  font-size: 25px;
+  font-weight: 600;
+  height: 80px;
+}
+.article-description {
+  height: 130px;
+  display: -webkit-box;
+  max-width: 200px;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
 
 /* ---------Notify----------- */
 .notify {
   display: flex;
-  justify-content: flex-end;
-  margin-right: 100px;
+  justify-content: center;
+  /* margin-right: 100px; */
   height: 600px;
   width: 100%;
   max-width: 1340px;
@@ -434,7 +464,7 @@ nav {
     display: flex;
     justify-content: center;
     margin-right: 0px;
-    height: 600px;
+    height: 400px;
     width: 100%;
     max-width: 1340px;
     padding: 20px;
@@ -497,6 +527,18 @@ nav {
 
   nav:hover {
     transform: translateX(0);
+  }
+  .news {
+    width: calc(100%-40px);
+    margin-left: 20px;
+  }
+  .news-section {
+    justify-content: left;
+    width: 100%;
+  }
+  .headlines {
+    height: 100%;
+    width: calc(100%-40px);
   }
 }
 
