@@ -13,9 +13,16 @@ var corsOptions = {
   optionsSuccessStatus: 200,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH']
 };
+app.use(
+  helmet.contentSecurityPolicy({
+    directives: {
+      defaultSrc: ["'self'", 'https://weather-app-six-phi-69.vercel.app/']
+      //...other directives
+    }
+  })
+);
 
 app.use(cors(corsOptions));
-app.use(helmet());
 app.use(xss());
 app.use(expresLimiter());
 
