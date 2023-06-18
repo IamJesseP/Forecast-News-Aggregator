@@ -1,9 +1,5 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import { useState, useEffect } from 'react';
-import axios from 'axios';
-import { useSnapCarousel } from 'react-snap-carousel';
-
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -12,31 +8,16 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import './styles.css';
 
-export default function Headlines({ newsData }) {
-  const { scrollRef } = useSnapCarousel();
+export default function Headlines({ newsData, city }) {
   return (
-    <div className="news-section">
-      <h1 className="news-title">News</h1>
-      <div className="headlines">
-        <ul
-          ref={scrollRef}
-          style={{
-            display: 'flex',
-            overflow: 'auto',
-            scrollSnapType: 'x mandatory'
-          }}>
-          {newsData.newsData.articles.slice(0, 10).map((article, index) => (
-            <li
-              key={index}
-              style={{
-                fontSize: '50px',
-                width: '250px',
-                flexShrink: 0,
-                color: '#fff',
-                display: 'flex',
-                justifyContent: 'top',
-                alignItems: 'top'
-              }}>
+    <div className="news-page">
+      <h1 className="news-title">News in {city}</h1>
+      <div className="news-section">
+        <div
+          className="headlines"
+          style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
+          {newsData.newsData.articles.slice(0, 9).map((article, index) => (
+            <div key={index} style={{ margin: '15px' }}>
               <Card sx={{ maxWidth: 345 }}>
                 <CardMedia component="img" alt="" height="140" image={article.urlToImage} />
                 <CardContent className="card-body">
@@ -67,9 +48,9 @@ export default function Headlines({ newsData }) {
                   </Button>
                 </CardActions>
               </Card>
-            </li>
+            </div>
           ))}
-        </ul>
+        </div>
       </div>
     </div>
   );

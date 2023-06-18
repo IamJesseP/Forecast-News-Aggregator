@@ -15,7 +15,7 @@ export default function WeatherHero({ weatherData, city, aiData }) {
   useEffect(() => {
     const timer = setTimeout(() => {
       setStartTyping(true);
-    }, 4500); // Change this value to control the delay
+    }, 4200); // Change this value to control the delay
 
     // Cleanup function to clear the timer when the component unmounts
     return () => clearTimeout(timer);

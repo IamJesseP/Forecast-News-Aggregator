@@ -373,34 +373,56 @@ nav {
 }
 /* ---------News----------- */
 .news {
+  margin-top: 100px;
   display: flex;
-  height: 1000px;
+  max-height: 800px;
   width: calc(100%-40px);
   justify-content: center;
   align-items: center;
   padding: 20px;
 }
-.news-section {
+
+.news-page {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+}
+
+.news-section {
+  display: flex;
+  flex-direction: column;
+  height: 750px;
+  justify-content: center;
   max-width: calc(100%-130px);
   padding: 20px;
-  background: rgba(174, 173, 173, 0.08);
+  background: rgba(15, 15, 15, 0.349);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   -webkit-backdrop-filter: blur(2.4px);
   border: 1px solid rgba(174, 173, 173, 0.3);
-  border-radius: 5px;
+  border-radius: 25px;
 }
 .news-title {
   margin-bottom: 20px;
+  margin-left: 20px;
+  align-self: start;
 }
 .headlines {
-  height: 100%;
+  max-height: 800px; /* limiting the height */
   max-width: 1340px;
-  overflow: hidden;
+  overflow: auto; /* enabling scroll */
   width: 100%;
+  display: flex; /* enabling flex */
+  flex-wrap: wrap; /* enabling wrapping */
+  justify-content: center; /* centering items */
+}
+
+.headlines > div {
+  /* targeting div instead of ul > li */
+  max-height: 400px; /* limiting the height */
+  display: flex;
+  margin: 10px; /* some margin around each card */
 }
 .headlines > ul {
   height: 100%;
@@ -434,7 +456,6 @@ nav {
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
-
 /* ---------Notify----------- */
 .notify {
   display: flex;
