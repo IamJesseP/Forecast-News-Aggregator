@@ -111,9 +111,7 @@ export default function Forecast({ weatherData, airQualityData }) {
 
   let uvIndexArray = weatherData?.weatherData?.daily?.uv_index_max[0];
   let dailyRainfall = weatherData?.weatherData?.daily?.rain_sum[0];
-  console.log('Rain Weather:', rainWeather);
-  console.log('Snow Weather:', snowWeather);
-  console.log('Cloud Weather:', cloudWeather);
+
   return (
     <div className="forecast">
       <div className="forecast-left">
