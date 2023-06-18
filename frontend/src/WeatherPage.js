@@ -126,9 +126,10 @@ export default function WeatherPage() {
                   type="search"
                   className="searchbox"
                   size="small"
-                  color="white"
                   value={searchQuery}
-                  sx={{ input: { color: '#ffffff' } }}
+                  sx={{
+                    input: { color: '#ffffff', backgroundColor: '#ffffffe7', borderRadius: '4px' }
+                  }}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   focused
                   onKeyPress={(e) => {
@@ -136,10 +137,6 @@ export default function WeatherPage() {
                       e.preventDefault();
                       handleSearch();
                     }
-                  }}
-                  sx={{
-                    backgroundColor: '#ffffffe7',
-                    borderRadius: '4px'
                   }}
                 />
               </Box>
