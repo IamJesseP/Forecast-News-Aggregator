@@ -3,9 +3,19 @@ const express = require('express');
 const path = require('path');
 const app = express();
 //Security
+const helmet = require('helmet');
+const xss = require('xss-clean');
 const cors = require('cors');
+const expresLimiter = require('express-rate-limit');
 
-app.use(cors());
+var corsOptions = {
+  origin: 'https://weather-app-six-phi-69.vercel.app/', //  frontend domain
+  optionsSuccessStatus: 200,
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH']
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 
 // Routers
