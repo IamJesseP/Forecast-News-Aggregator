@@ -11,6 +11,7 @@ import './styles.css';
 import Box from '@mui/material/Box';
 import SearchIcon from '@mui/icons-material/Search';
 import { TextField } from '@mui/material';
+import LoadingButton from '@mui/lab/LoadingButton';
 // Framer
 import { motion } from 'framer-motion';
 import { fadeIn } from './variants';
@@ -18,13 +19,14 @@ import { fadeIn } from './variants';
 import axios from 'axios';
 
 export default function WeatherPage() {
+  const [renderKey, setRenderKey] = useState(0);
   const [weatherData, setWeatherData] = useState('');
   const [airQualityData, setAirQualityData] = useState('');
   const [newsData, setNewsData] = useState('');
   const [searchedCity, setSearchedCity] = useState('San Diego');
-  const [searchQuery, setSearchQuery] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const source = axios.CancelToken.source();
+  const searchInputRef = useRef(null);
 
   async function fetchData(city, state) {
     try {
@@ -47,6 +49,7 @@ export default function WeatherPage() {
         }
       });
       const airQualityData = airQualityResponse.data;
+
       setAirQualityData(airQualityData);
       // News Data
       const newsResponse = await axios.get('http://localhost:4000/news', {
@@ -59,9 +62,6 @@ export default function WeatherPage() {
       const newsData = newsResponse.data;
       setNewsData(newsData);
       setIsLoading(false);
-      console.log(weatherData);
-      console.log(airQualityData);
-      console.log(newsData);
     } catch (error) {
       if (axios.isCancel(error)) {
         // Handle if request was cancelled
@@ -74,9 +74,11 @@ export default function WeatherPage() {
   }
 
   async function handleSearch() {
+    let searchInput = searchInputRef.current.value;
+
     let searchArray;
-    if (searchQuery.includes(',')) {
-      searchArray = searchQuery.split(',');
+    if (searchInput.includes(',')) {
+      searchArray = searchInput.split(',');
     }
     if (!searchArray || searchArray.length !== 2) {
       console.log('Please provide City and State separated by a comma or a space');
@@ -86,15 +88,11 @@ export default function WeatherPage() {
     let state = searchArray[1].trim();
     setSearchedCity(city);
     fetchData(city, state);
+    setRenderKey((prevKey) => prevKey + 1);
   }
 
   useEffect(() => {
-    setSearchQuery('San Diego, CA');
-    handleSearch();
-    // Cleanup function to cancel request on unmount
-    return () => {
-      source.cancel('Operation canceled by the user.');
-    };
+    fetchData('San Diego', 'CA');
   }, []);
 
   return (
@@ -105,6 +103,7 @@ export default function WeatherPage() {
         </div>
         <div className="navbar" id="weather">
           <motion.div
+            key={`motion-div-1-${renderKey}`}
             className="container"
             variants={fadeIn('right', 0.3)}
             initial="hidden"
@@ -127,9 +126,9 @@ export default function WeatherPage() {
                   className="searchbox"
                   size="small"
                   color="white"
-                  value={searchQuery}
+                  inputRef={searchInputRef}
+                  defaultValue=""
                   sx={{ input: { color: '#ffffff' } }}
-                  onChange={(e) => setSearchQuery(e.target.value)}
                   focused
                   onKeyPress={(e) => {
                     if (e.key === 'Enter') {
@@ -143,33 +142,64 @@ export default function WeatherPage() {
           </motion.div>
         </div>
         <motion.div
+          key={`motion-div-2-${renderKey}`}
           className="weather"
           variants={fadeIn('right', 0.3)}
           initial="hidden"
           whileInView={'show'}
           viewport={{ once: false, amount: 0.5 }}>
-          {!isLoading && <WeatherHero weatherData={weatherData} city={searchedCity} />}
+          {isLoading ? (
+            <LoadingButton
+              loading
+              variant="outlined"
+              sx={{ mt: 1, ml: 1, width: '100%', height: '500px' }}>
+              Loading Weather Data
+            </LoadingButton>
+          ) : (
+            <WeatherHero weatherData={weatherData} city={searchedCity} />
+          )}
         </motion.div>
         <motion.div
+          key={`motion-div-3-${renderKey}`}
           className="weather"
           variants={fadeIn('right', 0.3)}
           initial="hidden"
           whileInView={'show'}
           viewport={{ once: false, amount: 0.5 }}>
-          {!isLoading && <Forecast weatherData={weatherData} airQualityData={airQualityData} />}
+          {isLoading ? (
+            <LoadingButton
+              loading
+              variant="outlined"
+              sx={{ mt: 1, ml: 1, width: '100%', height: '500px' }}>
+              Loading Weather Data
+            </LoadingButton>
+          ) : (
+            <Forecast weatherData={weatherData} airQualityData={airQualityData} />
+          )}
         </motion.div>
         <div className="spacer"></div>
         <motion.div
+          key={`motion-div-4-${renderKey}`}
           className="news"
           id="news"
           variants={fadeIn('right', 0.3)}
           initial="hidden"
           whileInView={'show'}
           viewport={{ once: false, amount: 0.5 }}>
-          {!isLoading && <Headlines city={searchedCity} newsData={newsData} />}
+          {isLoading ? (
+            <LoadingButton
+              loading
+              variant="outlined"
+              sx={{ mt: 1, ml: 1, width: '100%', height: '500px' }}>
+              Loading Weather Data
+            </LoadingButton>
+          ) : (
+            <Headlines city={searchedCity} newsData={newsData} />
+          )}
         </motion.div>
         <div className="spacer"></div>
         <motion.div
+          key={`motion-div-5-${renderKey}`}
           className="weather"
           id="sms"
           variants={fadeIn('right', 0.3)}

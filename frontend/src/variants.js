@@ -6,7 +6,6 @@ export const fadeIn = (direction, delay) => {
       x: direction === 'left' ? 80 : direction === 'right' ? -80 : 0
     },
     show: {
-      y: 0,
       x: 0,
       opacity: 1,
       transition: {
@@ -15,6 +14,8 @@ export const fadeIn = (direction, delay) => {
         delay: delay,
         ease: [0.25, 0.25, 0.25, 0.75]
       }
-    }
+    },
+    enter: { opacity: 1, x: 0 },
+    exit: { opacity: 0, x: '-100%' }
   };
 };
