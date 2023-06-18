@@ -9,7 +9,7 @@ const cors = require('cors');
 const expresLimiter = require('express-rate-limit');
 
 var corsOptions = {
-  origin: 'https://weather-app-six-phi-69.vercel.app', //  frontend domain
+  origin: '*', //  frontend domain
   optionsSuccessStatus: 200,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH']
 };
@@ -17,7 +17,7 @@ var corsOptions = {
 app.use(cors(corsOptions));
 app.use(helmet());
 app.use(xss());
-app.use(expresLimiter);
+app.use(expresLimiter());
 
 app.use(express.json());
 
