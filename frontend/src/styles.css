@@ -392,16 +392,52 @@ nav {
 
 /* ---------Notify----------- */
 .notify {
-  height: 300px;
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 100px;
+  height: 600px;
   width: 100%;
   max-width: 1340px;
   padding: 20px;
 }
 
+.notify-card {
+  display: flex;
+  flex-direction: row;
+  width: 60%;
+  max-width: 490px;
+  min-width: 350px;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.884);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  -webkit-backdrop-filter: blur(2.4px);
+  border: 1px solid rgba(174, 173, 173, 0.3);
+  border-radius: 25px;
+}
+
+.notify-title {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.notify-title {
+  color: rgba(0, 0, 0, 0.849);
+}
 /* ----------Mobile Devices----------- */
 @media only screen and (max-width: 768px) {
   .navbar {
     margin-top: 1px;
+  }
+  .notify {
+    display: flex;
+    justify-content: center;
+    margin-right: 0px;
+    height: 600px;
+    width: 100%;
+    max-width: 1340px;
+    padding: 20px;
   }
 
   .navbar h1 {
