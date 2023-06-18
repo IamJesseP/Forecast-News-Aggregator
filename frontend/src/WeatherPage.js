@@ -51,6 +51,7 @@ export default function WeatherPage() {
       const weatherResponse = await axios.get(
         'https://weather-news-aggr-91e624e25b2e.herokuapp.com/weather',
         {
+          withCredentials: false,
           cancelToken: source.token,
           params: {
             city: city,
@@ -76,6 +77,7 @@ export default function WeatherPage() {
       const airQualityResponse = await axios.get(
         'https://weather-news-aggr-91e624e25b2e.herokuapp.com/airquality',
         {
+          withCredentials: false,
           cancelToken: source.token,
           params: {
             city: city,
@@ -103,6 +105,7 @@ export default function WeatherPage() {
       const newsResponse = await axios.get(
         'https://weather-news-aggr-91e624e25b2e.herokuapp.com/news',
         {
+          withCredentials: false,
           cancelToken: source.token,
           params: {
             city: city,
@@ -128,6 +131,7 @@ export default function WeatherPage() {
       const aiResponse = await axios.get(
         'https://weather-news-aggr-91e624e25b2e.herokuapp.com/openai',
         {
+          withCredentials: false,
           cancelToken: source.token,
           params: {
             city: city,

@@ -11,6 +11,7 @@ const expresLimiter = require('express-rate-limit');
 var corsOptions = {
   origin: '*', //  frontend domain
   optionsSuccessStatus: 200,
+  credentials: false,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH']
 };
 app.use(
