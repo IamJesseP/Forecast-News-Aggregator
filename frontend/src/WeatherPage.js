@@ -128,7 +128,7 @@ export default function WeatherPage() {
                   size="small"
                   value={searchQuery}
                   sx={{
-                    input: { color: '#ffffff', backgroundColor: '#ffffffe7', borderRadius: '4px' }
+                    input: { color: '#ffffff' }
                   }}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   focused
@@ -169,7 +169,7 @@ export default function WeatherPage() {
           viewport={{ once: false, amount: 0.5 }}>
           {!isLoading && <Headlines city={searchedCity} newsData={newsData} />}
         </motion.div>
-        {/* <div className="spacer"></div> */}
+        <div className="spacer"></div>
         <motion.div
           className="weather"
           id="sms"
