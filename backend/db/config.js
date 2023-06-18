@@ -2,9 +2,9 @@ const AWS = require('aws-sdk');
 require('dotenv').config();
 
 AWS.config.update({
-  region: process.env.AWS_REGION,
-  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
+  region: process.env.AW_REGION,
+  accessKeyId: process.env.AW_ACCESS_KEY_ID,
+  secretAccessKey: process.env.AW_SECRET_ACCESS_KEY
 });
 
 module.exports = AWS;
