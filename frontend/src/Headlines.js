@@ -51,12 +51,18 @@ export default function Headlines({ newsData }) {
                   <Typography
                     className="article-description"
                     variant="body2"
-                    color="text.secondary">
+                    color="text.secondary"
+                    style={{ fontFamily: 'Montserrat, sans-serif' }}>
                     {article.description}
                   </Typography>
                 </CardContent>
                 <CardActions>
-                  <Button size="small" target="blank" href={article.url} rel="noopener noreferrer">
+                  <Button
+                    size="small"
+                    target="blank"
+                    href={article.url}
+                    rel="noopener noreferrer"
+                    style={{ fontFamily: 'Montserrat, sans-serif', color: '#0079D5' }}>
                     Learn More
                   </Button>
                 </CardActions>
