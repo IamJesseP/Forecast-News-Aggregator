@@ -48,13 +48,16 @@ export default function WeatherPage() {
   async function handleWeather(city, state) {
     try {
       // Weather Data
-      const weatherResponse = await axios.get('http://localhost:4000/weather', {
-        cancelToken: source.token,
-        params: {
-          city: city,
-          state: state
+      const weatherResponse = await axios.get(
+        'https://weather-news-aggr-91e624e25b2e.herokuapp.com/weather',
+        {
+          cancelToken: source.token,
+          params: {
+            city: city,
+            state: state
+          }
         }
-      });
+      );
       const weatherData = weatherResponse.data;
       setWeatherData(weatherData);
     } catch (error) {
@@ -70,13 +73,16 @@ export default function WeatherPage() {
   async function handleAirQualityData(city, state) {
     try {
       //air quality data
-      const airQualityResponse = await axios.get('http://localhost:4000/airquality', {
-        cancelToken: source.token,
-        params: {
-          city: city,
-          state: state
+      const airQualityResponse = await axios.get(
+        'https://weather-news-aggr-91e624e25b2e.herokuapp.com/airquality',
+        {
+          cancelToken: source.token,
+          params: {
+            city: city,
+            state: state
+          }
         }
-      });
+      );
       const airQualityData = airQualityResponse.data;
 
       setAirQualityData(airQualityData);
@@ -94,13 +100,16 @@ export default function WeatherPage() {
     try {
       //air quality data
       // News Data
-      const newsResponse = await axios.get('http://localhost:4000/news', {
-        cancelToken: source.token,
-        params: {
-          city: city,
-          state: state
+      const newsResponse = await axios.get(
+        'https://weather-news-aggr-91e624e25b2e.herokuapp.com/news',
+        {
+          cancelToken: source.token,
+          params: {
+            city: city,
+            state: state
+          }
         }
-      });
+      );
       const newsData = newsResponse.data;
       setNewsData(newsData);
     } catch (error) {
@@ -116,13 +125,16 @@ export default function WeatherPage() {
   async function handleOpenAIData(city, state) {
     try {
       // openai
-      const aiResponse = await axios.get('http://localhost:4000/openai', {
-        cancelToken: source.token,
-        params: {
-          city: city,
-          state: state
+      const aiResponse = await axios.get(
+        'https://weather-news-aggr-91e624e25b2e.herokuapp.com/openai',
+        {
+          cancelToken: source.token,
+          params: {
+            city: city,
+            state: state
+          }
         }
-      });
+      );
       const aiData = aiResponse.data.message;
       setAIData(aiData);
     } catch (error) {
