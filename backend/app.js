@@ -15,6 +15,10 @@ var corsOptions = {
 };
 
 app.use(cors(corsOptions));
+app.use(helmet());
+app.use(xss());
+app.use(expresLimiter);
+
 app.use(express.json());
 
 // Routers
