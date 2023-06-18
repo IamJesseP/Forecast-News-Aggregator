@@ -10,7 +10,6 @@ import { fadeIn } from './variants';
 import { TypeAnimation } from 'react-type-animation';
 
 export default function WeatherHero({ weatherData, city, aiData }) {
-  console.log(aiData);
   const [startTyping, setStartTyping] = useState(false);
   useEffect(() => {
     const timer = setTimeout(() => {

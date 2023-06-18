@@ -22,8 +22,6 @@ export default function Notify() {
         state,
         phoneNumber
       });
-
-      console.log('Data saved:', response.data);
     } catch (error) {
       console.log('An error occurred while saving the data:', error);
     }

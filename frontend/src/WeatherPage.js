@@ -124,7 +124,6 @@ export default function WeatherPage() {
         }
       });
       const aiData = aiResponse.data.message;
-      console.log(aiData);
       setAIData(aiData);
     } catch (error) {
       if (axios.isCancel(error)) {
