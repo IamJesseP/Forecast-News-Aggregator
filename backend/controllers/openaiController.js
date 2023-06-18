@@ -10,6 +10,7 @@ const getWeatherAI = async (req, res) => {
   }
   try {
     const response = await generateWeatherText(city, state);
+    console.log('ai response sent');
     return res.status(StatusCodes.OK).json({ message: response });
   } catch (error) {
     console.error(`An error occurred while generating weather text for ${city}, ${state}:`, error);

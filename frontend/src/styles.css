@@ -122,6 +122,7 @@ nav {
   max-width: 1340px;
   padding: 20px;
 }
+
 .hero-card {
   display: flex;
   flex-direction: row;
@@ -133,6 +134,20 @@ nav {
   -webkit-backdrop-filter: blur(2.4px);
   border: 1px solid rgba(174, 173, 173, 0.3);
   border-radius: 25px;
+}
+
+.hero-chatgpt {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  height: 100%;
+  width: auto;
+  font-size: 1.2rem;
+}
+
+.hero-chatgpt-text {
+  max-width: 350px;
+  margin-top: 12px;
 }
 
 .hero-container-1 {
@@ -174,9 +189,6 @@ nav {
   margin-left: 24px;
   gap: 6px;
   flex-wrap: wrap;
-}
-
-.hero-low-high {
   padding-right: 30px;
 }
 
@@ -489,6 +501,21 @@ nav {
   }
   .hero {
     padding: 10px 20px;
+  }
+  .hero-low-high > h2 {
+    font-size: 1.2rem;
+  }
+
+  .hero-chatgpt-text {
+    font-size: 0.9rem;
+  }
+  .hero-container-2 > div > div > h1 {
+    font-size: 1.5rem;
+  }
+
+  .hero-container-2 > div > div {
+    margin-top: -30px;
+    margin-left: 0px;
   }
 
   .forecast {

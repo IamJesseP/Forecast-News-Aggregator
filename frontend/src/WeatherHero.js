@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container } from '@mui/material';
 import sunny from './assets/sunny.png';
 import cloudy from './assets/cloudy.png';
@@ -7,8 +7,19 @@ import rainy from './assets/rainy.png';
 import snowy from './assets/snowy.png';
 import { motion } from 'framer-motion';
 import { fadeIn } from './variants';
+import { TypeAnimation } from 'react-type-animation';
 
-export default function WeatherHero({ weatherData, city }) {
+export default function WeatherHero({ weatherData, city, aiData }) {
+  console.log(aiData);
+  const [startTyping, setStartTyping] = useState(false);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setStartTyping(true);
+    }, 4500); // Change this value to control the delay
+
+    // Cleanup function to clear the timer when the component unmounts
+    return () => clearTimeout(timer);
+  }, [aiData]);
   // Max / low temps
   let maxTemp = weatherData?.weatherData?.daily?.temperature_2m_max[0];
   let lowTemp = weatherData?.weatherData?.daily?.temperature_2m_min[0];
@@ -67,6 +78,18 @@ export default function WeatherHero({ weatherData, city }) {
           <div className="hero-low-high">
             <h2>{`L ${lowTemp}°`}</h2>
             <h2>{`H ${maxTemp}°`}</h2>
+          </div>
+          <div className="hero-chatgpt">
+            {startTyping && (
+              <TypeAnimation
+                key={aiData}
+                sequence={aiData ? aiData.split('\n') : ['']}
+                speed={60}
+                repeat={false}
+                className="hero-chatgpt-text"
+                style={{ maxWidth: '350px' }}
+              />
+            )}
           </div>
         </motion.div>
         <div className="hero-container-2">

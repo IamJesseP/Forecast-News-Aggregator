@@ -23,12 +23,29 @@ export default function WeatherPage() {
   const [weatherData, setWeatherData] = useState('');
   const [airQualityData, setAirQualityData] = useState('');
   const [newsData, setNewsData] = useState('');
+  const [aiData, setAIData] = useState('');
   const [searchedCity, setSearchedCity] = useState('San Diego');
   const [isLoading, setIsLoading] = useState(true);
   const source = axios.CancelToken.source();
   const searchInputRef = useRef(null);
 
   async function fetchData(city, state) {
+    const dataPromises = [
+      handleOpenAIData(city, state),
+      handleWeather(city, state),
+      handleAirQualityData(city, state),
+      handleNewsData(city, state)
+    ];
+
+    try {
+      await Promise.all(dataPromises);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setIsLoading(false);
+    }
+  }
+  async function handleWeather(city, state) {
     try {
       // Weather Data
       const weatherResponse = await axios.get('http://localhost:4000/weather', {
@@ -40,7 +57,19 @@ export default function WeatherPage() {
       });
       const weatherData = weatherResponse.data;
       setWeatherData(weatherData);
-      // Air Quality Data
+    } catch (error) {
+      if (axios.isCancel(error)) {
+        // Handle if request was cancelled
+        console.log('Request cancelled', error.message);
+      } else {
+        // Handle usual errors
+        console.log('Something went wrong: ', error.message);
+      }
+    }
+  }
+  async function handleAirQualityData(city, state) {
+    try {
+      //air quality data
       const airQualityResponse = await axios.get('http://localhost:4000/airquality', {
         cancelToken: source.token,
         params: {
@@ -51,6 +80,19 @@ export default function WeatherPage() {
       const airQualityData = airQualityResponse.data;
 
       setAirQualityData(airQualityData);
+    } catch (error) {
+      if (axios.isCancel(error)) {
+        // Handle if request was cancelled
+        console.log('Request cancelled', error.message);
+      } else {
+        // Handle usual errors
+        console.log('Something went wrong: ', error.message);
+      }
+    }
+  }
+  async function handleNewsData(city, state) {
+    try {
+      //air quality data
       // News Data
       const newsResponse = await axios.get('http://localhost:4000/news', {
         cancelToken: source.token,
@@ -61,7 +103,29 @@ export default function WeatherPage() {
       });
       const newsData = newsResponse.data;
       setNewsData(newsData);
-      setIsLoading(false);
+    } catch (error) {
+      if (axios.isCancel(error)) {
+        // Handle if request was cancelled
+        console.log('Request cancelled', error.message);
+      } else {
+        // Handle usual errors
+        console.log('Something went wrong: ', error.message);
+      }
+    }
+  }
+  async function handleOpenAIData(city, state) {
+    try {
+      // openai
+      const aiResponse = await axios.get('http://localhost:4000/openai', {
+        cancelToken: source.token,
+        params: {
+          city: city,
+          state: state
+        }
+      });
+      const aiData = aiResponse.data.message;
+      console.log(aiData);
+      setAIData(aiData);
     } catch (error) {
       if (axios.isCancel(error)) {
         // Handle if request was cancelled
@@ -156,7 +220,12 @@ export default function WeatherPage() {
               Loading Weather Data
             </LoadingButton>
           ) : (
-            <WeatherHero weatherData={weatherData} city={searchedCity} />
+            <WeatherHero
+              weatherData={weatherData}
+              city={searchedCity}
+              aiData={aiData}
+              key={renderKey}
+            />
           )}
         </motion.div>
         <motion.div

@@ -33,4 +33,4 @@ const weatherChecker = (weatherData) => {
   return [cloudWeather, rainWeather, snowWeather];
 };
 
-module.exports = weatherChecker;
+module.exports.weatherChecker = weatherChecker;
