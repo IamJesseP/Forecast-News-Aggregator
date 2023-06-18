@@ -48,21 +48,22 @@ export default function WeatherPage() {
   async function handleWeather(city, state) {
     try {
       // Weather Data
-      const weatherResponse = await axios.get(
-        'https://cors-anywhere.herokuapp.com/https://weather-news-aggr-91e624e25b2e.herokuapp.com/weather/',
+      const response = await fetch(
+        'https://weather-news-aggr-91e624e25b2e.herokuapp.com/weather/?city=' +
+          city +
+          '&state=' +
+          state,
         {
-          withCredentials: false,
-          cancelToken: source.token,
-          params: {
-            city: city,
-            state: state
-          },
+          method: 'GET',
           headers: {
             'Content-Type': 'application/json'
-          }
+          },
+          credentials: 'omit',
+          signal: source.token
         }
       );
-      const weatherData = weatherResponse.data;
+
+      const weatherData = await response.json();
       setWeatherData(weatherData);
     } catch (error) {
       if (axios.isCancel(error)) {
@@ -76,23 +77,21 @@ export default function WeatherPage() {
   }
   async function handleAirQualityData(city, state) {
     try {
-      //air quality data
-      const airQualityResponse = await axios.get(
-        'https://cors-anywhere.herokuapp.com/https://weather-news-aggr-91e624e25b2e.herokuapp.com/airquality/',
+      const airQualityResponse = await fetch(
+        'https://weather-news-aggr-91e624e25b2e.herokuapp.com/airquality/?city=' +
+          city +
+          '&state=' +
+          state,
         {
-          withCredentials: false,
-          cancelToken: source.token,
-          params: {
-            city: city,
-            state: state
-          },
+          method: 'GET',
           headers: {
             'Content-Type': 'application/json'
-          }
+          },
+          credentials: 'omit',
+          signal: source.token
         }
       );
-      const airQualityData = airQualityResponse.data;
-
+      const airQualityData = await airQualityResponse.json();
       setAirQualityData(airQualityData);
     } catch (error) {
       if (axios.isCancel(error)) {
@@ -106,23 +105,21 @@ export default function WeatherPage() {
   }
   async function handleNewsData(city, state) {
     try {
-      //air quality data
-      // News Data
-      const newsResponse = await axios.get(
-        'https://cors-anywhere.herokuapp.com/https://weather-news-aggr-91e624e25b2e.herokuapp.com/news/',
+      const newsResponse = await fetch(
+        'https://weather-news-aggr-91e624e25b2e.herokuapp.com/news/?city=' +
+          city +
+          '&state=' +
+          state,
         {
-          withCredentials: false,
-          cancelToken: source.token,
-          params: {
-            city: city,
-            state: state
-          },
+          method: 'GET',
           headers: {
             'Content-Type': 'application/json'
-          }
+          },
+          credentials: 'omit',
+          signal: source.token // Assuming `source.token` is an AbortSignal
         }
       );
-      const newsData = newsResponse.data;
+      const newsData = await newsResponse.json();
       setNewsData(newsData);
     } catch (error) {
       if (axios.isCancel(error)) {
@@ -137,21 +134,19 @@ export default function WeatherPage() {
   async function handleOpenAIData(city, state) {
     try {
       // openai
-      const aiResponse = await axios.get(
-        'https://cors-anywhere.herokuapp.com/https://weather-news-aggr-91e624e25b2e.herokuapp.com/openai/',
+      const aiResponse = await fetch(
+        `https://weather-news-aggr-91e624e25b2e.herokuapp.com/openai/?city=${city}&state=${state}`,
         {
-          withCredentials: false,
-          cancelToken: source.token,
-          params: {
-            city: city,
-            state: state
-          },
+          method: 'GET',
           headers: {
             'Content-Type': 'application/json'
-          }
+          },
+          credentials: 'omit',
+          signal: source.token
         }
       );
-      const aiData = aiResponse.data.message;
+      const aiDataResponse = await aiResponse.json();
+      const aiData = aiDataResponse.message;
       setAIData(aiData);
     } catch (error) {
       if (axios.isCancel(error)) {
