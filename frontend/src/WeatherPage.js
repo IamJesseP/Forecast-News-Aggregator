@@ -14,7 +14,7 @@ import { TextField } from '@mui/material';
 // Framer
 import { motion } from 'framer-motion';
 import { fadeIn } from './variants';
-// Data modeling
+// Data
 import axios from 'axios';
 
 export default function WeatherPage() {

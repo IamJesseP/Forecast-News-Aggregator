@@ -4,7 +4,8 @@ const twilio = require('twilio');
 const {
   storePhoneNumber,
   deletePhoneNumber,
-  getAllPhoneNumbers
+  getAllPhoneNumbers,
+  getPhoneNumber
 } = require('../db/dynamoPhoneData');
 const { getWeather } = require('./weatherController');
 require('dotenv').config();
@@ -23,7 +24,15 @@ const savePhoneNumber = async (req, res) => {
   if (!city || !state) {
     return res.status(StatusCodes.BAD_REQUEST).json({ msg: 'Please provide both city and state' });
   }
+
   try {
+    const existingPhoneNumber = await getPhoneNumber(phoneNumber);
+    if (existingPhoneNumber) {
+      return res
+        .status(StatusCodes.CONFLICT)
+        .json({ msg: 'This phone number is already registered.' });
+    }
+
     await storePhoneNumber(phoneNumber, city, state);
     return res.status(StatusCodes.OK).json({ msg: 'Phone number saved successfully' });
   } catch (error) {
@@ -62,7 +71,7 @@ const sendMessage = async (phoneNumber, city, state) => {
   client.messages
     .create({
       from: '+18885894748',
-      to: phoneNumber,
+      to: `+1${phoneNumber}`,
       body: `Hello! The current weather in ${city}, ${state} is feeling around: ${tempAvg}`
     })
     .then((message) => console.log(message.sid))
@@ -71,6 +80,7 @@ const sendMessage = async (phoneNumber, city, state) => {
 
 cron.schedule('0 0 * * *', async () => {
   try {
+    console.log('Sending message...');
     const phoneDataList = await getAllPhoneNumbers();
     phoneDataList.forEach((phoneData) =>
       sendMessage(phoneData.phoneNumber, phoneData.city, phoneData.state)

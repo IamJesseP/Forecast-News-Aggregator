@@ -51,4 +51,21 @@ async function getAllPhoneNumbers() {
   }
 }
 
-module.exports = { storePhoneNumber, deletePhoneNumber, getAllPhoneNumbers };
+async function getPhoneNumber(phoneNumber) {
+  const params = {
+    TableName: 'phoneTable',
+    Key: {
+      phoneNumber: phoneNumber
+    }
+  };
+
+  try {
+    const data = await dynamoDb.get(params).promise();
+    return data.Item;
+  } catch (error) {
+    console.log('Error: ', error);
+    throw error;
+  }
+}
+
+module.exports = { storePhoneNumber, deletePhoneNumber, getAllPhoneNumbers, getPhoneNumber };
