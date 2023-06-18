@@ -177,7 +177,7 @@ export default function WeatherPage() {
             <Forecast weatherData={weatherData} airQualityData={airQualityData} />
           )}
         </motion.div>
-        <div className="spacer"></div>
+
         <motion.div
           key={`motion-div-4-${renderKey}`}
           className="news"
@@ -197,7 +197,7 @@ export default function WeatherPage() {
             <Headlines city={searchedCity} newsData={newsData} />
           )}
         </motion.div>
-        <div className="spacer"></div>
+
         <motion.div
           key={`motion-div-5-${renderKey}`}
           className="weather"
