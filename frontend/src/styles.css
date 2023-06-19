@@ -465,9 +465,6 @@ nav {
 }
 /* ---------Notify----------- */
 
-#sms {
-  padding-top: 100px;
-}
 .notify {
   display: flex;
   justify-content: center;
@@ -477,7 +474,8 @@ nav {
   height: 1000px;
   width: 100%;
   max-width: 1340px;
-  padding: 20px;
+  margin-top: 50px;
+  padding: 0px 20px 20px 20px;
 }
 
 .notify-card {
