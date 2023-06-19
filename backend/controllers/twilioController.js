@@ -39,7 +39,8 @@ const savePhoneNumber = async (req, res) => {
 };
 
 const deletePhone = async (req, res) => {
-  const { phoneNumber } = req.body;
+  const { phoneNumber } = req.query;
+
   // Validators
   if (!phoneNumber || phoneNumber.length !== 10) {
     console.log('incorrect phone');

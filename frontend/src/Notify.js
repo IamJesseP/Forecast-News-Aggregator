@@ -28,14 +28,13 @@ export default function Notify() {
         const responseData = response.data.msg;
         setPhoneResponse(responseData);
       } else {
-        const response = await axios.delete(deleteUrl, {
-          phoneNumber
-        });
+        const response = await axios.delete(`${deleteUrl}?phoneNumber=${phoneNumber}`);
         const responseData = response.data.msg;
         setPhoneResponse(responseData);
       }
     } catch (error) {
       console.log('An error occurred while saving the data:', error);
+      setPhoneResponse(error.response.data.msg || 'An unexpected error occurred.');
     }
   };
 
@@ -98,7 +97,7 @@ export default function Notify() {
               {phoneForm && 'Sign up here'}
             </a>
           </h3>
-          {phoneResponse && <h3 style={{ color: 'black', maxWidth: '150px' }}>{phoneResponse}</h3>}
+          <h3 style={{ color: 'black', maxWidth: '150px' }}>{phoneResponse}</h3>
         </Box>
       </div>
     </div>
