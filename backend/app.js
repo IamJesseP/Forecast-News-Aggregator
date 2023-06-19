@@ -5,18 +5,21 @@ const app = express();
 const AWS = require('./db/config');
 //Security
 const cors = require('cors');
-app.use(
-  cors({
-    origin: 'https://weather-app-six-phi-69.vercel.app'
-  })
-);
+const xss = require('xss');
 const rateLimit = require('express-rate-limit');
 
+// Security Usage
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000,
   max: 100
 });
 
+app.use(xss);
+app.use(
+  cors({
+    origin: 'https://weather-app-six-phi-69.vercel.app'
+  })
+);
 app.use(limiter);
 
 app.use(express.json());
