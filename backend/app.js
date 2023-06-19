@@ -14,7 +14,7 @@ const limiter = rateLimit({
   max: 100
 });
 
-app.use(xss);
+app.use(xss());
 app.use(
   cors({
     origin: 'https://weather-app-six-phi-69.vercel.app'
