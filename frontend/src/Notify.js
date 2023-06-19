@@ -10,11 +10,12 @@ export default function Notify() {
   const [city, setCity] = useState('');
   const [state, setState] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
+  const [phoneResponse, setPhoneResponse] = useState('');
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const url = 'http://localhost:4000/phone/savephone'; // Replace with your API url
+    const url = 'https://the-weather-news-aggr-b8c24050aa8e.herokuapp.com/phone/savephone'; // Replace with your API url
 
     try {
       const response = await axios.post(url, {
@@ -22,6 +23,8 @@ export default function Notify() {
         state,
         phoneNumber
       });
+      const responseData = response.data.msg;
+      setPhoneResponse(responseData);
     } catch (error) {
       console.log('An error occurred while saving the data:', error);
     }
@@ -68,6 +71,7 @@ export default function Notify() {
           <Button variant="contained" type="submit" onClick={handleSubmit}>
             Submit
           </Button>
+          {phoneResponse && <h3>{phoneResponse}</h3>}
         </Box>
       </div>
     </div>
