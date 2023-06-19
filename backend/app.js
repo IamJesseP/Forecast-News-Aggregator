@@ -5,7 +5,20 @@ const app = express();
 const AWS = require('./db/config');
 //Security
 const cors = require('cors');
-app.use(cors());
+app.use(
+  cors({
+    origin: 'https://weather-app-six-phi-69.vercel.app'
+  })
+);
+const rateLimit = require('express-rate-limit');
+
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 100
+});
+
+app.use(limiter);
+
 app.use(express.json());
 
 // Routers
