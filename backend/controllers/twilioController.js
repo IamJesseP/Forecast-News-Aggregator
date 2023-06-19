@@ -1,30 +1,28 @@
 const { StatusCodes } = require('http-status-codes');
-const cron = require('node-cron');
 const twilio = require('twilio');
-const {
-  storePhoneNumber,
-  deletePhoneNumber,
-  getAllPhoneNumbers,
-  getPhoneNumber
-} = require('../db/dynamoPhoneData');
-const { getWeather } = require('./weatherController');
+const { storePhoneNumber, deletePhoneNumber, getPhoneNumber } = require('../db/dynamoPhoneData');
+const fetchWeatherAPI = require('../API/fetchWeatherAPI');
+const { getDynamoWeatherData, storeDynamoWeatherData } = require('../db/dynamoWeatherData');
 require('dotenv').config();
 
 const accountSid = process.env.TWILIO_ACCOUNT_SID;
 const authToken = process.env.TWILIO_AUTH_TOKEN;
 const client = twilio(accountSid, authToken);
 
+let tempAvg;
+
 const savePhoneNumber = async (req, res) => {
   const { phoneNumber, city, state } = req.body;
+  // Validators
   if (!phoneNumber || phoneNumber.length !== 10) {
     return res
       .status(StatusCodes.BAD_REQUEST)
-      .json({ msg: 'Please provide a valid US phone number' });
+      .json({ msg: 'Please provide a valid US phone number in the format "6191234567"' });
   }
   if (!city || !state) {
     return res.status(StatusCodes.BAD_REQUEST).json({ msg: 'Please provide both city and state' });
   }
-
+  // DynamoDB save, send signup msg
   try {
     const existingPhoneNumber = await getPhoneNumber(phoneNumber);
     if (existingPhoneNumber) {
@@ -32,8 +30,8 @@ const savePhoneNumber = async (req, res) => {
         .status(StatusCodes.CONFLICT)
         .json({ msg: 'This phone number is already registered.' });
     }
-
     await storePhoneNumber(phoneNumber, city, state);
+    await sendSignUpMessage(phoneNumber, city, state);
     return res.status(StatusCodes.OK).json({ msg: 'Phone number saved successfully' });
   } catch (error) {
     return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ msg: 'An error occurred' });
@@ -42,11 +40,13 @@ const savePhoneNumber = async (req, res) => {
 
 const deletePhone = async (req, res) => {
   const { phoneNumber } = req.body;
+  // Validators
   if (!phoneNumber || phoneNumber.length !== 10) {
     return res
       .status(StatusCodes.BAD_REQUEST)
       .json({ msg: 'Please provide a valid US phone number' });
   }
+  // Delete
   try {
     await deletePhoneNumber(phoneNumber);
     return res.status(StatusCodes.OK).json({ msg: 'Phone number deleted successfully' });
@@ -55,19 +55,32 @@ const deletePhone = async (req, res) => {
   }
 };
 
+const sendSignUpMessage = async (phoneNumber, city, state) => {
+  // Used on savePhoneNumber
+  client.messages
+    .create({
+      from: '+18885894748',
+      to: `+1${phoneNumber}`,
+      body: `Hello! You're signed up for daily weather notifications! You'll receive a notification every morning with the weather for ${city}, ${state}. Unsubscribe available on our app!`
+    })
+    .then((message) => console.log(message.sid))
+    .catch((error) => console.log(error));
+};
+
 const sendMessage = async (phoneNumber, city, state) => {
-  let weatherData;
-  try {
-    weatherData = await getWeather(city, state);
-  } catch (error) {
-    console.log(`An error occurred while fetching weather data for ${city}, ${state}:`, error);
-  }
-  if (!weatherData) {
-    weatherData = 'No weather data available.';
+  let weatherData = await getDynamoWeatherData(city);
+  if (weatherData) {
+    console.log('data in db');
+  } else {
+    console.log('fetching data...');
+    weatherData = await fetchWeatherAPI(`${city}, ${state}`);
+    console.log('storing data...');
+    await storeDynamoWeatherData(weatherData, city);
+    weatherData = await getDynamoWeatherData(city);
   }
   let maxTemp = weatherData.daily.temperature_2m_max[0];
   let lowTemp = weatherData.daily.temperature_2m_min[0];
-  const tempAvg = Math.floor((lowTemp + maxTemp) / 2);
+  tempAvg = Math.floor((lowTemp + maxTemp) / 2);
   client.messages
     .create({
       from: '+18885894748',
@@ -78,16 +91,4 @@ const sendMessage = async (phoneNumber, city, state) => {
     .catch((error) => console.log(error));
 };
 
-cron.schedule('0 0 * * *', async () => {
-  try {
-    console.log('Sending message...');
-    const phoneDataList = await getAllPhoneNumbers();
-    phoneDataList.forEach((phoneData) =>
-      sendMessage(phoneData.phoneNumber, phoneData.city, phoneData.state)
-    );
-  } catch (error) {
-    console.log('An error occurred while fetching phone numbers:', error);
-  }
-});
-
-module.exports = { savePhoneNumber, deletePhone };
+module.exports = { savePhoneNumber, deletePhone, sendMessage };
