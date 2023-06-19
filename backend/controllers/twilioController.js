@@ -42,6 +42,7 @@ const deletePhone = async (req, res) => {
   const { phoneNumber } = req.body;
   // Validators
   if (!phoneNumber || phoneNumber.length !== 10) {
+    console.log('incorrect phone');
     return res
       .status(StatusCodes.BAD_REQUEST)
       .json({ msg: 'Please provide a valid US phone number' });
@@ -49,6 +50,7 @@ const deletePhone = async (req, res) => {
   // Delete
   try {
     await deletePhoneNumber(phoneNumber);
+    console.log('phone deleted');
     return res.status(StatusCodes.OK).json({ msg: 'Phone number deleted successfully' });
   } catch (error) {
     return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ msg: 'An error occurred' });

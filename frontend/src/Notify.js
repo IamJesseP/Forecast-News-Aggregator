@@ -15,7 +15,7 @@ export default function Notify() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+    setPhoneResponse('');
     const saveUrl = 'https://the-weather-news-aggr-b8c24050aa8e.herokuapp.com/phone/savephone';
     const deleteUrl = 'https://the-weather-news-aggr-b8c24050aa8e.herokuapp.com/phone/deletephone';
     try {
@@ -92,7 +92,8 @@ export default function Notify() {
             <a
               onClick={() => {
                 setPhoneForm((prevState) => !prevState);
-              }}>
+              }}
+              style={{ color: 'blue', textDecoration: 'underline', cursor: 'pointer' }}>
               {!phoneForm && 'Unsubscribe here'}
               {phoneForm && 'Sign up here'}
             </a>
