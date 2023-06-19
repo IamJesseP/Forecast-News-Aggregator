@@ -2,9 +2,9 @@
 const express = require('express');
 const path = require('path');
 const app = express();
+const AWS = require('./db/config');
 //Security
 const cors = require('cors');
-
 app.use(cors());
 app.use(express.json());
 
