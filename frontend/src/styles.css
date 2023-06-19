@@ -464,6 +464,10 @@ nav {
   overflow: hidden;
 }
 /* ---------Notify----------- */
+
+#sms {
+  padding-top: 100px;
+}
 .notify {
   display: flex;
   justify-content: center;
