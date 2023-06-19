@@ -39,7 +39,7 @@ export default function Notify() {
   };
 
   return (
-    <div className="notify">
+    <div className="notify" id="sms">
       <div className="notify-title-2">
         <h1>Get your weather, 24 hours on the dot.</h1>
         <div className="notify-clock">

@@ -280,7 +280,6 @@ export default function WeatherPage() {
         <motion.div
           key={`motion-div-5-${renderKey}`}
           className="weather"
-          id="sms"
           variants={fadeIn('right', 0.3)}
           initial="hidden"
           whileInView={'show'}
