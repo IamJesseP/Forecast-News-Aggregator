@@ -3,12 +3,13 @@ A full-stack application utilizing React, Node.js, Express.js, AWS DynamoDB, and
 
 The frontend is built with React, while the backend utilizes Node.js and Express.js. The application is hosted on Vercel for the frontend and Heroku for the backend.
 
-
-
-
 **A live frontend can be found [here](https://weather-app-six-phi-69.vercel.app/)**
 
 **A live backend with documentation has been deployed to Heroku**
+
+![image](https://github.com/IamJesseP/Weather-App/assets/108151191/0a244be3-85f8-4d5e-9fcb-7086f25efbc1)
+
+#
 
 ### Technologies
 * JSX
