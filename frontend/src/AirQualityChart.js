@@ -45,7 +45,7 @@ export default function AirQualityChart({ airQualityData }) {
       <div style={{ height: '10%' }}>
         <h2 style={{ color: 'black' }}>Air Quality Index</h2>
       </div>
-      <div style={{ width: '100%', height: '90%' }}>
+      <div style={{ width: '100%', height: '90%', maxHeight: '220px' }}>
         <Line data={data} options={options} />;
       </div>
     </>
