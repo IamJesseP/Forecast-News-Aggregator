@@ -50,6 +50,7 @@ export default function WeatherPage() {
       // Weather Data
       const weatherResponse = await axios.get(
         'https://the-weather-news-aggr-b8c24050aa8e.herokuapp.com/weather',
+        // 'http://localhost:4000/weather',
         {
           cancelToken: source.token,
           params: {
@@ -75,6 +76,7 @@ export default function WeatherPage() {
       //air quality data
       const airQualityResponse = await axios.get(
         'https://the-weather-news-aggr-b8c24050aa8e.herokuapp.com/airquality',
+        // 'http://localhost:4000/airquality',
         {
           cancelToken: source.token,
           params: {
@@ -102,6 +104,7 @@ export default function WeatherPage() {
       // News Data
       const newsResponse = await axios.get(
         'https://the-weather-news-aggr-b8c24050aa8e.herokuapp.com/news',
+        // 'http://localhost:4000/news',
         {
           cancelToken: source.token,
           params: {
@@ -127,6 +130,7 @@ export default function WeatherPage() {
       // openai
       const aiResponse = await axios.get(
         'https://the-weather-news-aggr-b8c24050aa8e.herokuapp.com/openai',
+        // 'http://localhost:4000/openai',
         {
           cancelToken: source.token,
           params: {
