@@ -55,9 +55,8 @@ The frontend is built with React, while the backend utilizes Node.js and Express
 
 
 ### Daily SMS Weather Notifications
-* Differentiated access based on user roles (students, company), giving a custom user experience
-* Students can claim tasks, update task status, and turn in google doc links
-* Companies can create tasks and monitor task submission status
+* Created a 24hour daily sms notification system
+* Users can subscribe or unsubscribe to weather notifications for a specific city, state
 * API used: Twilio
 
 
