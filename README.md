@@ -1,5 +1,5 @@
 # Forecast-News Aggregator
-A full-stack application utilizing React, Node.js, Express.js, AWS DynamoDB, and various APIs. This application aims to provide users with an interface to view weather data, air quality data, and news articles based on the city and state they input. Additionally, the OpenAI API is utilized to provide users a summary of weather conditions, as well as a fun fact about the searched city.
+A full-stack application utilizing React, Node.js, Express.js, AWS DynamoDB, the OpenAI API and various other APIs. This application aims to provide users with an interface to view weather data, air quality data, and news articles based on the city and state they input. Additionally, the OpenAI API is utilized to provide users a summary of weather conditions, as well as a fun fact about the searched city.
 
 The frontend is built with React, while the backend utilizes Node.js and Express.js. The application is hosted on Vercel for the frontend and Heroku for the backend.
 
